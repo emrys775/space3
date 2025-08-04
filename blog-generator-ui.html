@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Blog Generator | Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .blog-generator-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0a1628 0%, #1a2b4a 100%);
+            min-height: 100vh;
+        }
+        
+        .generator-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #ffffff;
+        }
+        
+        .generator-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fa4905 0%, #b03200 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .generator-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(250, 73, 5, 0.2);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #fa4905;
+            box-shadow: 0 0 0 3px rgba(250, 73, 5, 0.1);
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .generate-btn {
+            background: linear-gradient(135deg, #fa4905 0%, #b03200 100%);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(250, 73, 5, 0.3);
+        }
+        
+        .generate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .progress-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #fa4905 0%, #b03200 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .results-container {
+            display: none;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(250, 73, 5, 0.2);
+        }
+        
+        .blog-preview {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 2rem;
+            color: #333333;
+            margin-top: 1rem;
+        }
+        
+        .blog-preview h2 {
+            color: #fa4905;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666666;
+        }
+        
+        .blog-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: #fa4905;
+            color: #ffffff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #fa4905;
+            border: 2px solid #fa4905;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: #fa4905;
+            color: #ffffff;
+        }
+        
+        .quick-topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .topic-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(250, 73, 5, 0.2);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #ffffff;
+        }
+        
+        .topic-card:hover {
+            background: rgba(250, 73, 5, 0.1);
+            border-color: #fa4905;
+            transform: translateY(-2px);
+        }
+        
+        .error-message {
+            background: #ff4444;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        .success-message {
+            background: #fa4905;
+            color: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .generator-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-placeholder"></div>
+    
+    <div class="blog-generator-container">
+        <div class="generator-header">
+            <h1><i class="fas fa-robot"></i> AI Blog Generator</h1>
+            <p>Create engaging, SEO-optimized blog posts automatically with AI-powered research and content generation</p>
+        </div>
+        
+        <div class="generator-form">
+            <h2 style="color: #ffffff; margin-bottom: 1.5rem;">Generate New Blog Post</h2>
+            
+            <form id="blogGeneratorForm">
+                <div class="form-group">
+                    <label for="topic">Blog Topic *</label>
+                    <input type="text" id="topic" name="topic" placeholder="e.g., Artificial Intelligence in Business" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" name="category">
+                            <option value="Technology">Technology</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                            <option value="Web Development">Web Development</option>
+                            <option value="Mobile Apps">Mobile Apps</option>
+                            <option value="AI & Machine Learning">AI & Machine Learning</option>
+                            <option value="Cybersecurity">Cybersecurity</option>
+                            <option value="Cloud Computing">Cloud Computing</option>
+                            <option value="Business Solutions">Business Solutions</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tone">Writing Tone</label>
+                        <select id="tone" name="tone">
+                            <option value="professional">Professional</option>
+                            <option value="conversational">Conversational</option>
+                            <option value="technical">Technical</option>
+                            <option value="educational">Educational</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="keywords">Target Keywords (optional)</label>
+                    <input type="text" id="keywords" name="keywords" placeholder="Separate keywords with commas">
+                </div>
+                
+                <div class="form-group">
+                    <label for="customPrompt">Additional Instructions (optional)</label>
+                    <textarea id="customPrompt" name="customPrompt" placeholder="Any specific requirements or focus areas for the blog post..."></textarea>
+                </div>
+                
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    <i class="fas fa-magic"></i> Generate Blog Post
+                </button>
+            </form>
+        </div>
+        
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-text" id="progressText">Initializing...</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <p style="color: #cccccc; margin-top: 1rem;">This may take a few minutes. Please don't close this page.</p>
+        </div>
+        
+        <div class="results-container" id="resultsContainer">
+            <h2 style="color: #ffffff; margin-bottom: 1rem;">Generated Blog Post</h2>
+            <div class="blog-preview" id="blogPreview">
+                <!-- Generated blog content will appear here -->
+            </div>
+            
+            <div class="action-buttons">
+                <button class="generate-btn" onclick="saveBlogPost()">
+                    <i class="fas fa-save"></i> Save Blog Post
+                </button>
+                <button class="btn-secondary" onclick="editBlogPost()">
+                    <i class="fas fa-edit"></i> Edit Content
+                </button>
+                <button class="btn-secondary" onclick="generateAnother()">
+                    <i class="fas fa-refresh"></i> Generate Another
+                </button>
+            </div>
+        </div>
+        
+        <div class="error-message" id="errorMessage"></div>
+        <div class="success-message" id="successMessage"></div>
+        
+        <div style="margin-top: 3rem;">
+            <h3 style="color: #ffffff; margin-bottom: 1rem;">Quick Topic Suggestions</h3>
+            <div class="quick-topics">
+                <div class="topic-card" onclick="setTopic('Cloud Computing for Small Businesses')">
+                    <i class="fas fa-cloud"></i>
+                    <h4>Cloud Computing</h4>
+                    <p>For Small Businesses</p>
+                </div>
+                <div class="topic-card" onclick="setTopic('Cybersecurity Best Practices 2024')">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Cybersecurity</h4>
+                    <p>Best Practices 2024</p>
+                </div>
+                <div class="topic-card" onclick="setTopic('Mobile App Development Trends')">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h4>Mobile Apps</h4>
+                    <p>Development Trends</p>
+                </div>
+                <div class="topic-card" onclick="setTopic('Digital Marketing Automation')">
+                    <i class="fas fa-bullhorn"></i>
+                    <h4>Digital Marketing</h4>
+                    <p>Automation Tools</p>
+                </div>
+                <div class="topic-card" onclick="setTopic('AI in Customer Service')">
+                    <i class="fas fa-robot"></i>
+                    <h4>AI Solutions</h4>
+                    <p>Customer Service</p>
+                </div>
+                <div class="topic-card" onclick="setTopic('E-commerce Platform Selection')">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h4>E-commerce</h4>
+                    <p>Platform Selection</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="footer-placeholder"></div>
+    
+    <script src="ai-blog-generator.js"></script>
+    <script>
+        let currentBlogPost = null;
+        let blogGenerator = null;
+        
+        // Initialize the blog generator
+        document.addEventListener('DOMContentLoaded', function() {
+            blogGenerator = new AIBlogGenerator();
+            
+            // Load navigation and footer
+            loadWidgets();
+            
+            // Setup form submission
+            document.getElementById('blogGeneratorForm').addEventListener('submit', handleFormSubmit);
+            
+            // Create a demo blog post on page load
+            createDemoBlogPost();
+        });
+        
+        async function createDemoBlogPost() {
+            try {
+                // Check if demo post already exists in localStorage
+                const existingPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                const hasDemoPost = existingPosts.some(post => post.title && post.title.includes('Digital Transformation'));
+                
+                if (!hasDemoPost) {
+                    // Generate demo post
+                    const demoPost = await blogGenerator.generateBlogPost('Digital Transformation in Modern Business', 'Technology');
+                    
+                    if (demoPost && demoPost.title) {
+                        // Save demo post to localStorage
+                        existingPosts.push(demoPost);
+                        localStorage.setItem('blogPosts', JSON.stringify(existingPosts));
+                        console.log('Demo blog post created successfully!');
+                    }
+                }
+            } catch (error) {
+                console.log('Demo post creation skipped:', error.message);
+            }
+        }
+        
+        function loadWidgets() {
+            fetch('nav-widget.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('nav-placeholder').innerHTML = data;
+                })
+                .catch(error => console.log('Navigation widget not found'));
+                
+            fetch('footer-widget.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-placeholder').innerHTML = data;
+                })
+                .catch(error => console.log('Footer widget not found'));
+        }
+        
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const topic = formData.get('topic');
+            const category = formData.get('category');
+            
+            if (!topic.trim()) {
+                showError('Please enter a topic for the blog post.');
+                return;
+            }
+            
+            await generateBlogPost(topic, category);
+        }
+        
+        async function generateBlogPost(topic, category = 'Technology') {
+            try {
+                // Show progress
+                showProgress();
+                
+                // Simulate progress updates
+                updateProgress(10, 'Researching topic...');
+                await delay(1000);
+                
+                updateProgress(30, 'Analyzing market trends...');
+                await delay(1500);
+                
+                updateProgress(50, 'Generating content...');
+                await delay(2000);
+                
+                updateProgress(70, 'Creating images...');
+                await delay(1000);
+                
+                updateProgress(90, 'Finalizing blog post...');
+                await delay(500);
+                
+                // Generate the actual blog post
+                currentBlogPost = await blogGenerator.generateBlogPost(topic, category);
+                
+                updateProgress(100, 'Complete!');
+                await delay(500);
+                
+                // Show results
+                showResults(currentBlogPost);
+                
+            } catch (error) {
+                console.error('Error generating blog post:', error);
+                showError('Failed to generate blog post. Please try again.');
+                hideProgress();
+            }
+        }
+        
+        function showProgress() {
+            document.getElementById('progressContainer').style.display = 'block';
+            document.getElementById('resultsContainer').style.display = 'none';
+            document.getElementById('generateBtn').disabled = true;
+            hideMessages();
+        }
+        
+        function hideProgress() {
+            document.getElementById('progressContainer').style.display = 'none';
+            document.getElementById('generateBtn').disabled = false;
+        }
+        
+        function updateProgress(percentage, text) {
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = text;
+        }
+        
+        function showResults(blogPost) {
+            hideProgress();
+            
+            const preview = document.getElementById('blogPreview');
+            preview.innerHTML = `
+                <h2>${blogPost.title}</h2>
+                <div class="blog-meta">
+                    <span><i class="fas fa-user"></i> ${blogPost.author}</span>
+                    <span><i class="fas fa-calendar"></i> ${blogPost.dateFormatted}</span>
+                    <span><i class="fas fa-clock"></i> ${blogPost.readTime} min read</span>
+                    <span><i class="fas fa-folder"></i> ${blogPost.category}</span>
+                </div>
+                <p><strong>Excerpt:</strong> ${blogPost.excerpt}</p>
+                ${blogPost.featuredImage ? `
+                    <div style="margin: 1rem 0;">
+                        <img src="${blogPost.featuredImage.url}" alt="${blogPost.featuredImage.alt}" style="width: 100%; max-width: 600px; border-radius: 8px;">
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">${blogPost.featuredImage.caption}</p>
+                    </div>
+                ` : ''}
+                <div style="max-height: 400px; overflow-y: auto; border: 1px solid #eee; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                    ${blogPost.content}
+                </div>
+                <div class="blog-tags">
+                    ${blogPost.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                </div>
+            `;
+            
+            document.getElementById('resultsContainer').style.display = 'block';
+            document.getElementById('resultsContainer').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => {
+                errorDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => {
+                successDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        function hideMessages() {
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+        }
+        
+        function setTopic(topic) {
+            document.getElementById('topic').value = topic;
+            document.getElementById('topic').focus();
+        }
+        
+        async function saveBlogPost() {
+            if (!currentBlogPost) {
+                showError('No blog post to save.');
+                return;
+            }
+            
+            try {
+                // In a real implementation, this would save to the server
+                console.log('Saving blog post:', currentBlogPost);
+                
+                // Simulate saving
+                await delay(1000);
+                
+                showSuccess(`Blog post "${currentBlogPost.title}" saved successfully!`);
+                
+                // Update blog index (in real implementation)
+                // await updateBlogIndex(currentBlogPost);
+                
+            } catch (error) {
+                console.error('Error saving blog post:', error);
+                showError('Failed to save blog post. Please try again.');
+            }
+        }
+        
+        function editBlogPost() {
+            if (!currentBlogPost) {
+                showError('No blog post to edit.');
+                return;
+            }
+            
+            // In a real implementation, this would open an editor
+            alert('Edit functionality would open a rich text editor here.');
+        }
+        
+        function generateAnother() {
+            document.getElementById('resultsContainer').style.display = 'none';
+            document.getElementById('topic').value = '';
+            document.getElementById('topic').focus();
+            currentBlogPost = null;
+        }
+        
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        // Global functions for easy access
+        window.generateBlogPost = generateBlogPost;
+        window.setTopic = setTopic;
+        window.saveBlogPost = saveBlogPost;
+        window.editBlogPost = editBlogPost;
+        window.generateAnother = generateAnother;
+    </script>
+</body>
+</html>

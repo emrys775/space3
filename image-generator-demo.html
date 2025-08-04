@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator - Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="image-generator-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Prosoft Digital Space" class="logo">
+                    <span>Prosoft Digital Space</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="image-generator-demo.html" class="nav-link active">AI Generator</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <section class="hero-section" style="padding: 60px 0; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div class="container">
+                <div class="hero-content" style="text-align: center; color: white;">
+                    <h1 style="font-size: 3rem; margin-bottom: 20px;">AI Image Generator</h1>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Create stunning, professional images for your digital projects using advanced AI technology</p>
+                    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                            <i class="fas fa-magic" style="font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                            <span>AI Powered</span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                            <i class="fas fa-bolt" style="font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                            <span>Fast Generation</span>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: 8px; backdrop-filter: blur(10px);">
+                            <i class="fas fa-palette" style="font-size: 1.5rem; margin-bottom: 10px; display: block;"></i>
+                            <span>Multiple Styles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="padding: 80px 0; background: #f8f9fa;">
+            <div class="container">
+                <!-- Image Generator Widget -->
+                <div id="image-generator-widget"></div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section style="padding: 80px 0; background: white;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px;">Why Choose Our AI Image Generator?</h2>
+                    <p style="font-size: 1.1rem; color: #7f8c8d; max-width: 600px; margin: 0 auto;">Experience the power of artificial intelligence in creating professional-grade images tailored to your business needs.</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+                    <div style="text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #3498db, #2980b9); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-brain" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">Smart AI Technology</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Powered by Google's advanced AI models to understand your requirements and generate contextually relevant images.</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #27ae60, #229954); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-cogs" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">Service-Specific Templates</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Pre-configured prompts for web development, mobile apps, AI analytics, and other digital services.</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f39c12, #d68910); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                            <i class="fas fa-download" style="font-size: 2rem; color: white;"></i>
+                        </div>
+                        <h3 style="color: #2c3e50; margin-bottom: 15px;">Easy Download & Use</h3>
+                        <p style="color: #7f8c8d; line-height: 1.6;">Generate, preview, and download high-quality images ready for immediate use in your projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Usage Instructions -->
+        <section style="padding: 80px 0; background: #f8f9fa;">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 60px;">
+                    <h2 style="font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px;">How It Works</h2>
+                    <p style="font-size: 1.1rem; color: #7f8c8d;">Simple steps to create amazing images with AI</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #3498db; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold;">1</div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Choose Service Type</h4>
+                        <p style="color: #7f8c8d;">Select from our predefined service categories or create a custom prompt</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #27ae60; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold;">2</div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Customize Details</h4>
+                        <p style="color: #7f8c8d;">Add specific requirements, choose size and style preferences</p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #f39c12; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.5rem; font-weight: bold;">3</div>
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">Generate & Download</h4>
+                        <p style="color: #7f8c8d;">Click generate, preview your image, and download when satisfied</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="image-generator.js"></script>
+    <script src="ai-image-handler.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        // Load the image generator widget
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('image-generator-widget.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('image-generator-widget').innerHTML = html;
+                    
+                    // Initialize the handler after widget is loaded
+                    if (typeof AIImageHandler !== 'undefined') {
+                        window.aiImageHandler = new AIImageHandler();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading image generator widget:', error);
+                    document.getElementById('image-generator-widget').innerHTML = 
+                        '<div style="text-align: center; padding: 40px; color: #e74c3c;">'
+                        + '<i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 15px;"></i>'
+                        + '<p>Unable to load image generator. Please refresh the page.</p>'
+                        + '</div>';
+                });
+            
+            // Load footer widget
+            fetch('footer-widget.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-widget').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading footer widget:', error);
+                });
+        });
+        
+        // Listen for image selection events
+        document.addEventListener('imageSelected', function(event) {
+            console.log('Image selected:', event.detail);
+            // You can add custom handling here
+            alert('Image selected successfully! You can now use it in your project.');
+        });
+    </script>
+</body>
+</html>

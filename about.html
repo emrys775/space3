@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <video class="hero-video" autoplay muted loop>
+            <source src="video/prosoft video (3).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Prosoft Digital Space</h1>
+                <p class="hero-subtitle">Empowering African Businesses with Creative Technology Solutions</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">150+</span>
+                        <span class="stat-label">Happy Clients</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">88%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="company-overview">
+        <div class="container">
+            <div class="section-header">
+                <h2>360° Digital Transformation for African Businesses</h2>
+                <p>We are a leading digital innovation company specializing in creative technology solutions that empower businesses across Ghana and West Africa to thrive in the digital age.</p>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-text">
+                    <h3>Our Story</h3>
+                    <p>Founded with a vision to bridge the digital divide in Africa, Prosoft Digital Space has grown from a small startup to a trusted partner for businesses seeking digital transformation. We understand the unique challenges and opportunities that African businesses face, and we've tailored our solutions to address these specific needs.</p>
+                    
+                    <p>Our journey began with a simple belief: that every African business deserves access to world-class technology solutions. Today, we've helped over 150 businesses across Ghana and West Africa transform their operations, enhance their brand presence, and achieve sustainable growth through innovative digital solutions.</p>
+                    
+                    <p>We combine local market expertise with global technology standards to deliver solutions that are not only cutting-edge but also culturally relevant and economically viable for African businesses.</p>
+                </div>
+                
+                <div class="overview-image">
+                    <img src="assets/prosoft1 (6).jpg" alt="Prosoft Digital Space Office" style="width: 100%; height: 300px; object-fit: cover; border-radius: 10px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values -->
+    <section class="mvv-section">
+        <div class="container">
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
+                    <p>To bridge the digital divide by providing world-class technology solutions tailored for African businesses. We strive to make advanced digital tools accessible, affordable, and effective for businesses of all sizes across the continent.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading catalyst for digital transformation across West Africa, fostering innovation and growth. We envision a future where every African business can compete globally through the power of technology.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Our Values</h3>
+                    <p>Innovation, integrity, and impact - driving meaningful change through technology and creativity. We believe in ethical business practices, continuous learning, and creating solutions that make a real difference.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Core Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Core Team</h2>
+                <p>The passionate professionals driving innovation at Prosoft Digital Space</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image animated-gradient-border">
+                        <img src="assest4/emrys images (1).jpg" alt="CEO" style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="member-info">
+                        <h3>Emrys Grant</h3>
+                        <p class="member-role">CEO & Founder</p>
+                        <p class="member-bio">With over 5 years of experience in technology and 
+                            business development, Emrys leads our vision of digital transformation 
+                            across Africa. He understands Technology Management and has successfully 
+                            launched multiple tech startups.</p>
+                        <div class="member-social">
+                            <a href="https://www.linkedin.com/in/sgrant999/"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/emrysgrant/"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image animated-gradient-border">
+                        <img src="assest4/emrys images (3).jpg" alt="CTO" style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="member-info">
+                        <h3>Ama Osei</h3>
+                        <p class="member-role">Chief Technology Officer</p>
+                        <p class="member-bio">Ama brings 6+ years of software engineering expertise, specializing in AI and machine learning solutions. She's passionate about creating technology that solves real African business challenges.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-image animated-gradient-border">
+                        <img src="assest3/prosoft image (3).jpg" alt="Creative Director" style="width: 100%; height: 250px; object-fit: cover; border-radius: 15px;">
+                    </div>
+                    <div class="member-info">
+                        <h3>Kofi Mensah</h3>
+                        <p class="member-role">Creative Director</p>
+                        <p class="member-bio">A creative visionary with 5+ years in brand design and digital marketing. Kofi ensures that every project we deliver not only functions perfectly but also tells a compelling visual story.</p>
+                        <div class="member-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Join over 150 businesses that have already transformed their operations with our innovative solutions.</p>
+                <div class="cta-buttons">
+                    <a href="index.html#contact" class="btn-primary">Get Started Today</a>
+                    <a href="portfolio.html" class="btn-secondary">View Our Work</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+    <script>
+        fetch('footer-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer widget:', error));
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

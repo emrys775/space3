@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Post Title - Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Blog Article -->
+    <section class="blog-article" style="padding: 120px 0 80px; background: #0a1628;">
+        <div class="container">
+            <div class="blog-layout">
+                <main class="blog-main">
+                    <div class="article-header" style="text-align: center; margin-bottom: 3rem;">
+                        <span class="blog-category">Category Name</span>
+                        <h1 style="font-size: 2.5rem; color: #ffffff; margin: 1rem 0; line-height: 1.2;">Your Blog Post Title Here</h1>
+                        <div class="blog-meta" style="justify-content: center; color: #b0b0b0; margin-bottom: 2rem;">
+                            <span>X min read</span>
+                            <span>•</span>
+                            <span>Date</span>
+                            <span>•</span>
+                            <span>By Prosoft Digital Team</span>
+                        </div>
+                    </div>
+                    
+                    <div class="article-content" style="color: #ffffff; line-height: 1.8;">
+                        <div class="article-image" style="text-align: center; margin: 2rem 0;">
+                            <div style="background: linear-gradient(135deg, rgba(154, 255, 0, 0.1), rgba(154, 255, 0, 0.05)); padding: 3rem; border-radius: 12px; display: inline-block;">
+                                <i class="fas fa-icon-name" style="font-size: 4rem; color: #fa4905;"></i>
+                            </div>
+                        </div>
+                        
+                        <p style="font-size: 1.1rem; margin-bottom: 1.5rem; color: #b0b0b0;">Your blog post introduction paragraph goes here...</p>
+                        
+                        <h2 style="color: #fa4905; margin: 2rem 0 1rem; font-size: 1.8rem;">Section Heading</h2>
+                        <p style="margin-bottom: 1.5rem; color: #b0b0b0;">Your content goes here...</p>
+                        
+                        <!-- Add more content sections as needed -->
+                        
+                        <div style="background: rgba(154, 255, 0, 0.1); padding: 2rem; border-radius: 12px; border-left: 4px solid #fa4905; margin: 2rem 0;">
+                            <p style="margin: 0; color: #ffffff; font-style: italic;">"Quote or call-to-action text goes here."</p>
+                        </div>
+                        
+                        <div style="text-align: center; margin: 3rem 0;">
+                            <a href="index.html#contact" class="btn-primary" style="display: inline-block; padding: 1rem 2rem; background: #fa4905; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600;">Call to Action Button</a>
+                        </div>
+                    </div>
+                </main>
+                
+                <!-- Sidebar will be automatically loaded by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+    <script>
+        fetch('footer-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer widget:', error));
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

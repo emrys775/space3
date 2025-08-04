@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <div class="blog-hero-content">
+                <h1>Latest Insights & Trends</h1>
+                <p>Stay updated with the latest in digital transformation, AI, and business growth strategies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Controls -->
+    <section class="blog-controls-section">
+        <div class="container">
+            <div class="blog-controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search blog posts...">
+                    <select id="categoryFilter" class="category-filter">
+                        <option value="">All Categories</option>
+                        <option value="Technology">Technology</option>
+                        <option value="Digital Marketing">Digital Marketing</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Mobile Apps">Mobile Apps</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                        <option value="Business Solutions">Business Solutions</option>
+                    </select>
+                </div>
+                
+
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="blog-main">
+        <div class="container">
+            <div class="blog-layout">
+                <!-- Main Content -->
+                <div class="blog-content">
+                    <div class="blog-grid" id="blogGrid">
+                        <!-- Blog posts will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <i class="fas fa-blog"></i>
+                        <h3>No blog posts found</h3>
+                        <p>Try adjusting your search criteria or create a new blog post.</p>
+
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <!-- Recent Posts -->
+                    <div class="sidebar-widget">
+                        <h3>Recent Posts</h3>
+                        <div class="recent-posts">
+                            <article class="recent-post">
+                                <div class="recent-post-image">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="blog-mobile-banking.html">The Future of Mobile Banking in West Africa</a></h4>
+                                    <span class="recent-post-date">Dec 15, 2024</span>
+                                </div>
+                            </article>
+
+                            <article class="recent-post">
+                                <div class="recent-post-image">
+                                    <i class="fas fa-chart-bar"></i>
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="blog-ai-analytics.html">AI-Powered Analytics for Small Businesses</a></h4>
+                                    <span class="recent-post-date">Dec 12, 2024</span>
+                                </div>
+                            </article>
+
+                            <article class="recent-post">
+                                <div class="recent-post-image">
+                                    <i class="fas fa-paint-brush"></i>
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4><a href="blog-african-brands.html">Building Authentic African Brands</a></h4>
+                                    <span class="recent-post-date">Dec 10, 2024</span>
+                                </div>
+                            </article>
+
+                            <article class="recent-post">
+                                <div class="recent-post-image">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="recent-post-content">
+                                    <h4>The Rise of AI in African Startups</h4>
+                                    <span class="recent-post-date">Dec 8, 2024</span>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Advertisement Placeholder -->
+                    <div class="sidebar-widget ad-widget">
+                        <div class="ad-placeholder">
+                            <i class="fas fa-ad"></i>
+                            <h4>Advertisement</h4>
+                            <p>Your ad could be here</p>
+                            <button class="ad-cta">Learn More</button>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="sidebar-widget">
+                        <h3>Categories</h3>
+                        <div class="categories">
+                            <a href="#" class="category-link">
+                                <span>Business Growth</span>
+                                <span class="category-count">12</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Digital Transformation</span>
+                                <span class="category-count">8</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Technology</span>
+                                <span class="category-count">15</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Branding</span>
+                                <span class="category-count">6</span>
+                            </a>
+                            <a href="#" class="category-link">
+                                <span>Market Trends</span>
+                                <span class="category-count">9</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <h3>Stay Updated</h3>
+                        <p>Get the latest insights delivered to your inbox</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+
+                    <!-- Another Ad Placeholder -->
+                    <div class="sidebar-widget ad-widget">
+                        <div class="ad-placeholder banner-ad">
+                            <i class="fas fa-bullhorn"></i>
+                            <h4>Sponsored Content</h4>
+                            <p>Promote your business here</p>
+                            <button class="ad-cta">Get Started</button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-widget"></div>
+    <script>
+        fetch('footer-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer widget:', error));
+    </script>
+
+    <script src="blog-manager.js"></script>
+    <script>
+        let blogManager = null;
+        let currentPage = 1;
+        const postsPerPage = 6;
+        let filteredPosts = [];
+        
+        // Initialize the blog page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Clear existing blog posts to force regeneration with enhanced professional styling
+            localStorage.removeItem('prosoftBlogPosts');
+            
+            blogManager = new BlogManager();
+            
+            // Force immediate generation of sample data
+            setTimeout(() => {
+                loadSampleData().then(() => {
+                    console.log('Professional blog posts generated successfully!');
+                    setupEventListeners();
+                    loadBlogPosts();
+                });
+            }, 1000);
+        });
+        
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', function() {
+                currentPage = 1;
+                filterAndDisplayPosts();
+            });
+            
+            document.getElementById('categoryFilter').addEventListener('change', function() {
+                currentPage = 1;
+                filterAndDisplayPosts();
+            });
+        }
+        
+        async function loadBlogPosts() {
+            // Load posts from localStorage
+            const allPosts = blogManager.getAllBlogPosts();
+            
+            // Also try to load posts from the blog-posts folder
+            try {
+                const response = await fetch('http://localhost:8001/list-blog-posts');
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log(`Found ${data.files.length} blog post files in blog-posts folder`);
+                }
+            } catch (error) {
+                console.log('Blog server not running, using localStorage only');
+            }
+            
+            filteredPosts = allPosts;
+            displayBlogPosts();
+        }
+        
+        function filterAndDisplayPosts() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.getElementById('categoryFilter').value;
+            
+            let posts = blogManager.getAllBlogPosts();
+            
+            if (searchTerm) {
+                posts = posts.filter(post => 
+                    post.title.toLowerCase().includes(searchTerm) ||
+                    post.excerpt.toLowerCase().includes(searchTerm) ||
+                    post.content.toLowerCase().includes(searchTerm) ||
+                    post.tags.some(tag => tag.toLowerCase().includes(searchTerm))
+                );
+            }
+            
+            if (selectedCategory) {
+                posts = posts.filter(post => post.category === selectedCategory);
+            }
+            
+            filteredPosts = posts;
+            displayBlogPosts();
+        }
+        
+        function displayBlogPosts() {
+            const blogGrid = document.getElementById('blogGrid');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredPosts.length === 0) {
+                blogGrid.style.display = 'none';
+                emptyState.style.display = 'block';
+                document.getElementById('pagination').innerHTML = '';
+                return;
+            }
+            
+            blogGrid.style.display = 'grid';
+            emptyState.style.display = 'none';
+            
+            const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+            const startIndex = (currentPage - 1) * postsPerPage;
+            const endIndex = startIndex + postsPerPage;
+            const postsToShow = filteredPosts.slice(startIndex, endIndex);
+            
+            blogGrid.innerHTML = postsToShow.map(post => createBlogCard(post)).join('');
+            generatePagination(totalPages);
+        }
+        
+        function createBlogCard(post) {
+            const imageHtml = post.featuredImage ? 
+                '<div class="blog-image" style="background-image: url(\'' + post.featuredImage.url + '\'); background-size: cover; background-position: center;"></div>' :
+                '<div class="blog-image"><i class="fas fa-blog"></i></div>';
+            
+            return '<article class="blog-card" onclick="openBlogPost(\'' + post.id + '\')">' +
+                imageHtml +
+                '<div class="blog-content-inner">' +
+                '<span class="blog-category">' + post.category + '</span>' +
+                '<h3>' + post.title + '</h3>' +
+                '<p>' + post.excerpt + '</p>' +
+                '<div class="blog-meta">' +
+                '<span>' + post.readTime + ' min read</span>' +
+                '<span>•</span>' +
+                '<span>' + post.dateFormatted + '</span>' +
+                '<span>•</span>' +
+                '<span>By ' + post.author + '</span>' +
+                '</div>' +
+                '<div class="blog-stats" style="margin-top: 1rem; display: flex; gap: 1rem; font-size: 0.9rem; color: #666;">' +
+                '<span><i class="fas fa-eye"></i> ' + (post.views || 0) + '</span>' +
+                '<span><i class="fas fa-heart"></i> ' + (post.likes || 0) + '</span>' +
+                '</div>' +
+                '</div>' +
+                '</article>';
+        }
+        
+        function generatePagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHtml = '';
+            
+            if (currentPage > 1) {
+                paginationHtml += '<button class="pagination-btn" onclick="changePage(' + (currentPage - 1) + ')">Previous</button>';
+            }
+            
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === currentPage || i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    paginationHtml += '<button class="pagination-btn ' + (i === currentPage ? 'active' : '') + '" onclick="changePage(' + i + ')">' + i + '</button>';
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    paginationHtml += '<span class="pagination-btn" style="border: none; background: none;">...</span>';
+                }
+            }
+            
+            if (currentPage < totalPages) {
+                paginationHtml += '<button class="pagination-btn" onclick="changePage(' + (currentPage + 1) + ')">Next <i class="fas fa-arrow-right"></i></button>';
+            }
+            
+            pagination.innerHTML = paginationHtml;
+        }
+        
+        function changePage(page) {
+            const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+            if (page >= 1 && page <= totalPages) {
+                currentPage = page;
+                displayBlogPosts();
+                document.getElementById('blogGrid').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+
+        
+        function openBlogPost(postId) {
+            const post = blogManager.getBlogPostById(postId);
+            if (post) {
+                blogManager.incrementViews(postId);
+                
+                // Redirect to blog post in blog-posts folder
+                const fileName = blogManager.generateFileName(post.title);
+                window.open(`blog-posts/${fileName}`, '_blank');
+                
+                displayBlogPosts();
+            }
+        }
+        
+
+        
+        // Global functions
+        window.changePage = changePage;
+        window.openBlogPost = openBlogPost;
+    </script>
+    
+    <style>
+        .blog-controls-section {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2b4a 100%);
+            padding: 2rem 0;
+        }
+        
+        .blog-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .search-container {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .search-input {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 1rem;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #fa4905;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .category-filter {
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-filter:focus {
+            outline: none;
+            border-color: #fa4905;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .category-filter option {
+            background: #0a1628;
+            color: #ffffff;
+        }
+        
+        .blog-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .action-btn {
+            background: linear-gradient(135deg, #fa4905 0%, #b03200 100%);
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(250, 73, 5, 0.3);
+        }
+        
+        .blog-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 120px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fa4905;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        @media (max-width: 768px) {
+            .search-input {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .blog-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .search-container {
+                flex-direction: column;
+            }
+            
+            .blog-stats {
+                gap: 1rem;
+            }
+            
+            .stat-card {
+                min-width: auto;
+                flex: 1;
+            }
+        }
+    </style>
+    
+    <script src="script.js"></script>
+</body>
+</html>

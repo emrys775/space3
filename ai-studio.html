@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosoft AI Studio - Business AI Assistant</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-studio-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html">
+                    <img src="assets/PROSOFT logo.png" alt="Prosoft Digital Space" class="logo">
+                    <span>Prosoft AI Studio</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ai-studio.html" class="nav-link active">AI Studio</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main AI Studio Interface -->
+    <div class="ai-studio-container">
+        <!-- Left Main Content Area -->
+        <div class="main-content">
+            <!-- Header Section -->
+            <div class="studio-header">
+                <div class="header-content">
+                    <h1><i class="fas fa-brain"></i> Prosoft AI Studio</h1>
+                    <p>Build with the latest AI models from Google - Customized for Business Excellence</p>
+                    <div class="feature-badges">
+                        <span class="badge"><i class="fas fa-bolt"></i> Fast & Free</span>
+                        <span class="badge"><i class="fas fa-business-time"></i> Business Focused</span>
+                        <span class="badge"><i class="fas fa-magic"></i> Multi-Modal AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Tools Grid -->
+            <div class="ai-tools-grid">
+                <!-- Business AI Assistant -->
+                <div class="ai-tool-card active" data-tool="business-assistant">
+                    <div class="tool-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Business AI Assistant</h3>
+                        <p>Get expert business advice, strategy insights, and professional guidance tailored to your industry.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Strategy Planning</span>
+                            <span class="feature-tag">Market Analysis</span>
+                            <span class="feature-tag">Business Writing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Generation -->
+                <div class="ai-tool-card" data-tool="image-generation">
+                    <div class="tool-icon">
+                        <i class="fas fa-image"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Business Image Generator</h3>
+                        <p>Create professional images for marketing, presentations, and business communications.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Marketing Materials</span>
+                            <span class="feature-tag">Presentations</span>
+                            <span class="feature-tag">Social Media</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Generation -->
+                <div class="ai-tool-card" data-tool="video-generation">
+                    <div class="tool-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Business Video Creator</h3>
+                        <p>Generate professional videos for training, marketing, and business presentations.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Training Videos</span>
+                            <span class="feature-tag">Explainer Content</span>
+                            <span class="feature-tag">Promotional</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Document Analysis -->
+                <div class="ai-tool-card" data-tool="document-analysis">
+                    <div class="tool-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="tool-content">
+                        <h3>Document Intelligence</h3>
+                        <p>Analyze business documents, contracts, and reports with AI-powered insights.</p>
+                        <div class="tool-features">
+                            <span class="feature-tag">Contract Review</span>
+                            <span class="feature-tag">Data Extraction</span>
+                            <span class="feature-tag">Summarization</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workspace Area -->
+            <div class="workspace-area">
+                <div class="workspace-header">
+                    <h2 id="workspace-title">Business AI Assistant</h2>
+                    <div class="workspace-controls">
+                        <button class="btn btn-secondary" id="clearWorkspace">
+                            <i class="fas fa-trash"></i> Clear
+                        </button>
+                        <button class="btn btn-primary" id="exportResults">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="workspace-content" id="workspaceContent">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="right-sidebar">
+            <!-- Business AI Chat -->
+            <div class="sidebar-section active" id="businessChat">
+                <div class="section-header">
+                    <h3><i class="fas fa-comments"></i> Business AI Chat</h3>
+                    <button class="btn btn-sm btn-secondary" id="clearChat">
+                        <i class="fas fa-broom"></i>
+                    </button>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message ai-message">
+                            <div class="message-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="message-content">
+                                <p>Hello! I'm your Business AI Assistant. I'm here to help you with business strategy, market analysis, financial planning, and professional guidance. How can I assist you today?</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-container">
+                        <div class="input-group">
+                            <textarea id="chatInput" placeholder="Ask me anything about business..." rows="3"></textarea>
+                            <button class="btn btn-primary" id="sendMessage">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <div class="quick-prompts">
+                            <button class="quick-prompt" data-prompt="Help me create a business plan for a tech startup">Business Plan</button>
+                            <button class="quick-prompt" data-prompt="Analyze market trends for digital services in Africa">Market Analysis</button>
+                            <button class="quick-prompt" data-prompt="Create a marketing strategy for a small business">Marketing Strategy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Projects -->
+            <div class="sidebar-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-history"></i> Recent Projects</h3>
+                </div>
+                <div class="recent-projects" id="recentProjects">
+                    <div class="project-item">
+                        <div class="project-icon">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        <div class="project-info">
+                            <h4>Marketing Banner</h4>
+                            <p>Generated 2 hours ago</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="project-info">
+                            <h4>Business Analysis</h4>
+                            <p>Generated yesterday</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- API Usage -->
+            <div class="sidebar-section">
+                <div class="section-header">
+                    <h3><i class="fas fa-chart-bar"></i> API Usage</h3>
+                </div>
+                <div class="usage-stats">
+                    <div class="usage-item">
+                        <span class="usage-label">Requests Today</span>
+                        <span class="usage-value">47/1000</span>
+                        <div class="usage-bar">
+                            <div class="usage-fill" style="width: 4.7%"></div>
+                        </div>
+                    </div>
+                    <div class="usage-item">
+                        <span class="usage-label">Images Generated</span>
+                        <span class="usage-value">12/100</span>
+                        <div class="usage-bar">
+                            <div class="usage-fill" style="width: 12%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="ai-studio.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        // Load footer widget
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('footer-widget.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('footer-widget').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading footer widget:', error);
+                });
+        });
+    </script>
+</body>
+</html>

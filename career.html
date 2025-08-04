@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers - Join Our Team</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .careers-hero {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        .careers-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #fa4905;
+        }
+        .careers-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+        .career-stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat .number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fa4905;
+        }
+        .stat .label {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .career-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .career-card {
+            background: #1a2f4a;
+            border-radius: 15px;
+            padding: 0;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+        .career-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(154, 255, 0, 0.2);
+        }
+        .career-flyer {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .career-content {
+            padding: 25px;
+        }
+        .career-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #9aff00;
+            margin-bottom: 15px;
+        }
+        .career-description {
+            color: #ccc;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        .skills-list {
+            list-style: none;
+            padding-left: 0;
+            color: #eee;
+            font-size: 0.95rem;
+        }
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .skills-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #9aff00;
+            font-weight: bold;
+        }
+        .experience-badge {
+            background: linear-gradient(45deg, #fa4905, #b03200);
+            color: #0a1628;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 15px;
+        }
+        /* Enhanced Popup Styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(5px);
+        }
+        .popup-overlay.active {
+            display: flex;
+        }
+        .popup-content {
+            background: linear-gradient(135deg, #0a1628 0%, #1a2f4a 100%);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 0 30px rgba(154, 255, 0, 0.3);
+            position: relative;
+            border: 2px solid #fa4905;
+        }
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            color: #9aff00;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .popup-close:hover {
+            color: #ffffff;
+        }
+        .popup-content h2 {
+            margin-bottom: 25px;
+            color: #9aff00;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .popup-content label {
+            display: block;
+            margin-bottom: 8px;
+            color: #eee;
+            font-weight: 500;
+        }
+        .popup-content input[type="text"],
+        .popup-content input[type="email"],
+        .popup-content input[type="tel"],
+        .popup-content input[type="url"],
+        .popup-content textarea,
+        .popup-content select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border: 2px solid #444;
+            font-size: 1rem;
+            background: #2a3f5a;
+            color: #fff;
+            transition: border-color 0.3s ease;
+        }
+        .popup-content input:focus,
+        .popup-content textarea:focus,
+        .popup-content select:focus {
+            outline: none;
+            border-color: #fa4905;
+        }
+        .file-input-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        .file-input {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        .file-input-label {
+            display: block;
+            padding: 12px;
+            background: #2a3f5a;
+            border: 2px dashed #fa4905;
+            border-radius: 8px;
+            text-align: center;
+            color: #9aff00;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .file-input-label:hover {
+            background: #3a4f6a;
+        }
+        .cover-letter-options {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .radio-option input[type="radio"] {
+            margin: 0;
+        }
+        .popup-content button {
+            background: linear-gradient(45deg, #fa4905, #b03200);
+            border: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 8px;
+            color: #0a1628;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .popup-content button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(154, 255, 0, 0.4);
+        }
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .career-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .careers-hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Careers Hero Section -->
+    <section class="careers-hero">
+        <div class="container">
+            <h1>Join Our Team</h1>
+            <p>Build your career with innovative projects and cutting-edge technology</p>
+            <div class="career-stats">
+                <div class="stat">
+                    <span class="number">4</span>
+                    <span class="label">Open Positions</span>
+                </div>
+                <div class="stat">
+                    <span class="number">100%</span>
+                    <span class="label">Remote Friendly</span>
+                </div>
+                <div class="stat">
+                    <span class="number">2+</span>
+                    <span class="label">Years Experience</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="career-container">
+            <div class="career-card" data-job="Graphic Designer">
+                <img src="assets/graphic-designer-flyer.svg" alt="Graphic Designer" class="career-flyer">
+                <div class="career-content">
+                    <div class="career-title">Graphic Designer</div>
+                    <div class="career-description">Create stunning visual concepts and designs using industry-standard tools. Work on diverse projects from branding to digital marketing materials.</div>
+                    <ul class="skills-list">
+                        <li>Adobe Photoshop</li>
+                        <li>Adobe Illustrator</li>
+                        <li>Figma</li>
+                        <li>Brand Identity Design</li>
+                        <li>UI/UX Design Principles</li>
+                    </ul>
+                    <span class="experience-badge">2+ Years Experience Required</span>
+                </div>
+            </div>
+            
+            <div class="career-card" data-job="Software Developer">
+                <img src="assets/software-developer-flyer.svg" alt="Software Developer" class="career-flyer">
+                <div class="career-content">
+                    <div class="career-title">Software Developer</div>
+                    <div class="career-description">Develop and maintain cutting-edge software applications using modern technologies. Collaborate with cross-functional teams to deliver high-quality solutions.</div>
+                    <ul class="skills-list">
+                        <li>JavaScript & Node.js</li>
+                        <li>Python Development</li>
+                        <li>WordPress & CMS</li>
+                        <li>Database Management</li>
+                        <li>API Development & Integration</li>
+                    </ul>
+                    <span class="experience-badge">2+ Years Experience Required</span>
+                </div>
+            </div>
+            
+            <div class="career-card" data-job="Digital Marketing">
+                <img src="assets/digital-marketing-flyer.svg" alt="Digital Marketing" class="career-flyer">
+                <div class="career-content">
+                    <div class="career-title">Digital Marketing Specialist</div>
+                    <div class="career-description">Drive digital marketing strategies and campaigns across multiple channels. Create compelling content and manage social media presence for diverse clients.</div>
+                    <ul class="skills-list">
+                        <li>Copywriting & Content Creation</li>
+                        <li>Social Media Management</li>
+                        <li>SEO & Analytics</li>
+                        <li>Email Marketing</li>
+                        <li>PPC Campaign Management</li>
+                    </ul>
+                    <span class="experience-badge">2+ Years Experience Required</span>
+                </div>
+            </div>
+            
+            <div class="career-card" data-job="Video and Motion Editor">
+                <img src="assets/video-editor-flyer.svg" alt="Video and Motion Editor" class="career-flyer">
+                <div class="career-content">
+                    <div class="career-title">Video & Motion Editor</div>
+                    <div class="career-description">Create engaging video content and motion graphics for various digital platforms. Transform concepts into compelling visual stories that captivate audiences.</div>
+                    <ul class="skills-list">
+                        <li>Adobe Premiere Pro</li>
+                        <li>After Effects</li>
+                        <li>Motion Graphics Design</li>
+                        <li>Video Production</li>
+                        <li>Color Grading & Audio Editing</li>
+                    </ul>
+                    <span class="experience-badge">2+ Years Experience Required</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="popup-overlay" id="application-popup">
+        <div class="popup-content">
+            <span class="popup-close" id="popup-close">&times;</span>
+            <h2 id="popup-job-title">Apply for Position</h2>
+            <form id="application-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicant-name">Full Name *</label>
+                        <input type="text" id="applicant-name" name="applicant-name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="applicant-email">Email Address *</label>
+                        <input type="email" id="applicant-email" name="applicant-email" required />
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="applicant-phone">Phone Number</label>
+                        <input type="tel" id="applicant-phone" name="applicant-phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="applicant-linkedin">LinkedIn Profile</label>
+                        <input type="url" id="applicant-linkedin" name="applicant-linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="applicant-location">Country/Location *</label>
+                    <input type="text" id="applicant-location" name="applicant-location" required placeholder="e.g., Ghana, Nigeria, Kenya" />
+                </div>
+                
+                <div class="form-group">
+                    <label>Cover Letter *</label>
+                    <div class="cover-letter-options">
+                        <div class="radio-option">
+                            <input type="radio" id="cover-letter-type" name="cover-letter-method" value="type" checked>
+                            <label for="cover-letter-type">Type Here</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="cover-letter-upload" name="cover-letter-method" value="upload">
+                            <label for="cover-letter-upload">Upload File</label>
+                        </div>
+                    </div>
+                    <textarea id="cover-letter-text" name="cover-letter-text" rows="4" placeholder="Tell us why you're perfect for this role..." required></textarea>
+                    <div class="file-input-wrapper" id="cover-letter-file-wrapper" style="display: none;">
+                        <input type="file" id="cover-letter-file" name="cover-letter-file" class="file-input" accept=".pdf,.doc,.docx,.txt">
+                        <label for="cover-letter-file" class="file-input-label">
+                            <i class="fas fa-upload"></i> Click to upload cover letter
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cv-upload">CV/Resume *</label>
+                    <div class="file-input-wrapper">
+                        <input type="file" id="cv-upload" name="cv-upload" class="file-input" accept=".pdf,.doc,.docx" required>
+                        <label for="cv-upload" class="file-input-label">
+                            <i class="fas fa-file-upload"></i> Click to upload your CV/Resume
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="cta-button">
+                    <i class="fas fa-paper-plane"></i> Submit Application
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const careerCards = document.querySelectorAll('.career-card');
+        const popup = document.getElementById('application-popup');
+        const popupClose = document.getElementById('popup-close');
+        const popupJobTitle = document.getElementById('popup-job-title');
+        const applicationForm = document.getElementById('application-form');
+        const coverLetterRadios = document.querySelectorAll('input[name="cover-letter-method"]');
+        const coverLetterText = document.getElementById('cover-letter-text');
+        const coverLetterFileWrapper = document.getElementById('cover-letter-file-wrapper');
+        const coverLetterFile = document.getElementById('cover-letter-file');
+
+        careerCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const jobTitle = card.getAttribute('data-job');
+                popupJobTitle.textContent = `Apply for ${jobTitle}`;
+                popup.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        popupClose.addEventListener('click', () => {
+            popup.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Handle cover letter method toggle
+        coverLetterRadios.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'type') {
+                    coverLetterText.style.display = 'block';
+                    coverLetterFileWrapper.style.display = 'none';
+                    coverLetterText.required = true;
+                    coverLetterFile.required = false;
+                } else {
+                    coverLetterText.style.display = 'none';
+                    coverLetterFileWrapper.style.display = 'block';
+                    coverLetterText.required = false;
+                    coverLetterFile.required = true;
+                }
+            });
+        });
+
+        // File input labels update
+        document.querySelectorAll('.file-input').forEach(input => {
+            input.addEventListener('change', function() {
+                const label = this.nextElementSibling;
+                if (this.files.length > 0) {
+                    label.innerHTML = `<i class="fas fa-check"></i> ${this.files[0].name}`;
+                    label.style.color = '#fa4905';
+                }
+            });
+        });
+
+        applicationForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Basic validation
+            const requiredFields = applicationForm.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    isValid = false;
+                    field.style.borderColor = '#ff4444';
+                } else {
+                    field.style.borderColor = '#fa4905';
+                }
+            });
+            
+            if (isValid) {
+                alert('Application submitted successfully! We will review your application and get back to you soon.');
+                applicationForm.reset();
+                popup.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Reset file labels
+                document.querySelectorAll('.file-input-label').forEach(label => {
+                    if (label.getAttribute('for') === 'cv-upload') {
+                        label.innerHTML = '<i class="fas fa-file-upload"></i> Click to upload your CV/Resume';
+                    } else {
+                        label.innerHTML = '<i class="fas fa-upload"></i> Click to upload cover letter';
+                    }
+                    label.style.color = '#9aff00';
+                });
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        });
+    </script>
+</body>
+</html>

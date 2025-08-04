@@ -1,0 +1,35 @@
+{
+  "name": "spaceb-image-optimizer",
+  "version": "1.0.0",
+  "description": "Image and video optimization tools for SpaceB project to reduce file sizes while maintaining quality",
+  "main": "image-optimizer.js",
+  "scripts": {
+    "optimize": "node image-optimizer.js",
+    "optimize-replace": "node image-optimizer.js --replace",
+    "auto-optimize": "node auto-image-optimizer.js",
+    "cleanup-backups": "node auto-image-optimizer.js --cleanup",
+    "optimize-videos": "node video-optimizer.js",
+    "optimize-videos-replace": "node video-optimizer.js --replace",
+    "auto-optimize-videos": "node auto-video-optimizer.js",
+    "cleanup-video-backups": "node auto-video-optimizer.js --cleanup",
+    "video-stats": "node auto-video-optimizer.js --stats",
+    "install-deps": "npm install sharp chokidar",
+    "start": "python -m http.server 8000"
+  },
+  "keywords": [
+    "image",
+    "optimization",
+    "compression",
+    "web",
+    "performance"
+  ],
+  "author": "SpaceB Team",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "sharp": "^0.32.6"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

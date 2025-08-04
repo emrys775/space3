@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Prosoft Digital Space</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Portfolio Hero Section -->
+    <section class="portfolio-hero">
+        <div class="container">
+            <h1>Our Portfolio</h1>
+            <p>Discover the innovative apps and solutions we've built for businesses across Africa</p>
+            <div class="portfolio-stats">
+                <div class="stat">
+                    <span class="number">20+</span>
+                    <span class="label">Apps Developed</span>
+                </div>
+                <div class="stat">
+                    <span class="number">15+</span>
+                    <span class="label">Industries Served</span>
+                </div>
+                <div class="stat">
+                    <span class="number">100%</span>
+                    <span class="label">Client Satisfaction</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Complete Portfolio</h2>
+                <p>Explore our comprehensive collection of innovative applications and digital solutions</p>
+            </div>
+            
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items will be dynamically generated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- App Modal -->
+    <div id="appModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <h2 id="modalTitle"></h2>
+                <div class="modal-tags" id="modalTags"></div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-info">
+                    <div class="info-section">
+                        <h3><i class="fas fa-lightbulb"></i> Description</h3>
+                        <p id="modalDescription"></p>
+                    </div>
+                    <div class="info-section">
+                        <h3><i class="fas fa-users"></i> Target Users</h3>
+                        <p id="modalTargetUsers"></p>
+                    </div>
+                    <div class="info-section">
+                        <h3><i class="fas fa-dollar-sign"></i> Monetization</h3>
+                        <p id="modalMonetization"></p>
+                    </div>
+                    <div class="info-section">
+                        <h3><i class="fas fa-robot"></i> AI Integration</h3>
+                        <p id="modalAI"></p>
+                    </div>
+                    <div class="info-section">
+                        <h3><i class="fas fa-chart-line"></i> Scalability</h3>
+                        <div id="modalScalability"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-primary">Request Similar App</button>
+                <button class="btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+    <script>
+        fetch('footer-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer widget:', error));
+    </script>
+
+    <script src="portfolio.js"></script>
+</body>
+</html>

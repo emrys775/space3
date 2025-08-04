@@ -1,0 +1,52 @@
+<!-- Navigation Widget -->
+<nav class="navbar">
+    <div class="nav-container">
+        <div class="nav-logo">
+            <a href="index.html">
+                <img src="assets/PROSOFT logo.png" alt="Prosoft Digital Space Logo" style="width: 50px; height: auto; object-fit: contain;">
+                <span>Prosoft Digital Space</span>
+            </a>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html" id="nav-home">Home</a></li>
+            <li><a href="about.html" id="nav-about">About Us</a></li>
+            <li><a href="index.html#services" id="nav-services">Services</a></li>
+            <li><a href="portfolio.html" id="nav-portfolio">Portfolio</a></li>
+            <li><a href="blog.html" id="nav-blog">Blog</a></li>
+            <li><a href="index.html#contact" id="nav-contact">Contact</a></li>
+        </ul>
+            <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<script>
+// Function to set active navigation item
+function setActiveNav() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    
+    // Remove active class from all nav items
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Add active class based on current page
+    if (currentPage === 'index.html' || currentPage === '') {
+        document.getElementById('nav-home').classList.add('active');
+    } else if (currentPage === 'about.html') {
+        document.getElementById('nav-about').classList.add('active');
+    } else if (currentPage === 'portfolio.html') {
+        document.getElementById('nav-portfolio').classList.add('active');
+    } else if (currentPage === 'blog.html') {
+        document.getElementById('nav-blog').classList.add('active');
+    } else if (currentPage === 'career.html') {
+        document.querySelector('.cta-button').classList.add('active');
+    }
+}
+
+// Set active nav on page load
+document.addEventListener('DOMContentLoaded', setActiveNav);
+</script>

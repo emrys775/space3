@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prosoft Digital Space - Empowering African Businesses</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Widget -->
+    <div id="nav-widget"></div>
+    
+    <script>
+        // Load navigation widget
+        fetch('nav-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('nav-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    </script>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="rating-badge">
+                    <span class="platform">Clutch</span>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                
+                    </div>
+                    <span class="rating-text">4.9 Rating</span>
+                </div>
+                
+                <h1 class="hero-title">
+                    Empowering African Businesses with 
+                    <span class="highlight">Creative Technology</span>
+                </h1>
+                
+                <p class="hero-subtitle">
+                    Digital innovation, AI-driven solutions, and creative services for growth in Ghana and West Africa. 
+                    Unlimited design, one simple plan. Elevate your brand effortlessly.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn-primary">Get Started</a>
+                    <button class="btn-secondary">See Our Work</button>
+                </div>
+                
+                <div class="availability">
+                    <span class="dot"></span>
+                    <span>2 Spots Available</span>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="image-slideshow">
+                    <img id="slideshow-image" src="assets2/hand-holding-smartphone-social-media-concept.jpg" alt="Professional working with technology" class="slideshow-img active">
+                    <div class="image-overlay"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="trusted-by">
+            <p>Trusted by 150+ Founders Worldwide</p>
+            <div class="company-logos">
+                <div class="logo">Horizon</div>
+                <div class="logo">Mindscape</div>
+                <div class="logo">NovoTech</div>
+                <div class="logo">Quantum</div>
+                <div class="logo">Tazon</div>
+                <div class="logo">Bytscape</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Building Section -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <h2>Why Choose Prosoft Digital Space?</h2>
+                <p class="trust-subtitle">Your Success is Our Priority</p>
+                <div class="trust-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">88%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                   
+                </div>
+                <div class="trust-message">
+                    <p>"We don't just build websites and apps - we build lasting partnerships. Our commitment to excellence and innovation has helped hundreds of African businesses transform their digital presence and achieve remarkable growth."</p>
+                    <div class="trust-badges">
+                        <span class="badge">✓ Certified Professionals</span>
+                        <span class="badge">✓ 100% Satisfaction Guarantee</span>
+                        <span class="badge">✓ Global Standards</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>360° Digital Transformation for African Businesses</h2>
+                <p>We are a leading digital innovation company specializing in creative technology solutions that empower businesses across Ghana and West Africa to thrive in the digital age.</p>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Our Mission</h3>
+                    <p>To bridge the digital divide by providing world-class technology solutions tailored for African businesses.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-eye"></i>
+                    <h3>Our Vision</h3>
+                    <p>To be the leading catalyst for digital transformation across West Africa, fostering innovation and growth.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Our Values</h3>
+                    <p>Innovation, integrity, and impact - driving meaningful change through technology and creativity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive digital solutions designed to accelerate your business growth</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Brand Strategy & Creative Design</h3>
+                    <p>Complete brand identity development, logo design, and visual communication strategies that resonate with African markets.</p>
+                    <ul>
+                        <li>Brand Identity & Logo Design</li>
+                        <li>Marketing Materials</li>
+                        <li>Digital Graphics</li>
+                        <li>Brand Guidelines</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Business Management Software & AI</h3>
+                    <p>Custom software solutions and AI-powered tools to streamline operations and boost productivity.</p>
+                    <ul>
+                        <li>Custom Software Development</li>
+                        <li>AI Integration</li>
+                        <li>Business Automation</li>
+                        <li>Data Analytics</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3>Print Solutions</h3>
+                    <p>High-quality print production services for all your marketing and business communication needs.</p>
+                    <ul>
+                        <li>Business Cards & Stationery</li>
+                        <li>Brochures & Flyers</li>
+                        <li>Large Format Printing</li>
+                        <li>Packaging Design</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Consulting & Training</h3>
+                    <p>Strategic guidance and training programs to help your team leverage digital tools effectively.</p>
+                    <ul>
+                        <li>Digital Strategy Consulting</li>
+                        <li>Technology Training</li>
+                        <li>Business Process Optimization</li>
+                        <li>Change Management</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Media Management</h3>
+                    <p>Comprehensive social media strategies to build your brand presence and engage with your audience effectively.</p>
+                    <ul>
+                        <li>Content Creation & Curation</li>
+                        <li>Social Media Strategy</li>
+                        <li>Community Management</li>
+                        <li>Analytics & Reporting</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Web Design and Development</h3>
+                    <p>Modern, responsive websites and web applications that deliver exceptional user experiences and drive business growth.</p>
+                    <ul>
+                        <li>Responsive Web Design</li>
+                        <li>E-commerce Development</li>
+                        <li>Web Application Development</li>
+                        <li>Website Maintenance & Support</li>
+                    </ul>
+                </div>
+                
+        
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Prosoft Digital Space?</h2>
+                <p>We combine local expertise with global standards to deliver exceptional results</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Local Expertise</h3>
+                    <p>Deep understanding of African markets and business culture</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-brain"></i>
+                    <h3>AI Integration</h3>
+                    <p>Cutting-edge AI solutions tailored for your business needs</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>End-to-End Solutions</h3>
+                    <p>Complete digital transformation from strategy to implementation</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>Client-Centric Approach</h3>
+                    <p>Personalized service and ongoing support for your success</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Showcasing our impact across various industries</p>
+            </div>
+            
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="assest3/prosoft image (1).jpg" alt="E-Commerce Platform" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Complete digital transformation for a leading retail chain, resulting in 300% increase in online sales.</p>
+                        <div class="portfolio-tags">
+                            <span>Web Development</span>
+                            <span>AI Integration</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="assest3/prosoft image (10).jpg" alt="Healthcare Management System" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Healthcare Management System</h3>
+                        <p>Custom software solution for a hospital network, improving patient care and operational efficiency by 40%.</p>
+                        <div class="portfolio-tags">
+                            <span>Software Development</span>
+                            <span>Healthcare</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item">
+                    <div class="portfolio-image">
+                        <img src="assest3/prosoft image (8).jpg" alt="Educational Platform" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Educational Platform</h3>
+                        <p>AI-powered learning management system serving over 10,000 students across West Africa.</p>
+                        <div class="portfolio-tags">
+                            <span>EdTech</span>
+                            <span>AI Solutions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="portfolio-cta">
+                <a href="portfolio.html" class="btn-secondary portfolio-link">
+                    <i class="fas fa-arrow-right"></i>
+                    Check out more of our recent projects
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Insights</h2>
+                <p>Stay updated with the latest trends in digital transformation and business growth</p>
+            </div>
+            
+            <div class="blog-grid">
+                <article class="blog-card">
+                    <a href="blog-mobile-banking.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="blog-image">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Digital Transformation</span>
+                            <h3>The Future of Mobile Banking in West Africa</h3>
+                            <p>Exploring how mobile technology is revolutionizing financial services across the region...</p>
+                            <div class="blog-meta">
+                                <span>5 min read</span>
+                                <span>•</span>
+                                <span>Dec 15, 2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <article class="blog-card">
+                    <a href="blog-ai-analytics.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="blog-image">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Business Growth</span>
+                            <h3>AI-Powered Analytics for Small Businesses</h3>
+                            <p>How artificial intelligence is making advanced analytics accessible to SMEs...</p>
+                            <div class="blog-meta">
+                                <span>7 min read</span>
+                                <span>•</span>
+                                <span>Dec 12, 2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+                
+                <article class="blog-card">
+                    <a href="blog-african-brands.html" target="_blank" style="text-decoration: none; color: inherit;">
+                        <div class="blog-image">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="blog-content">
+                            <span class="blog-category">Branding</span>
+                            <h3>Building Authentic African Brands</h3>
+                            <p>Strategies for creating brand identities that resonate with local and global audiences...</p>
+                            <div class="blog-meta">
+                                <span>6 min read</span>
+                                <span>•</span>
+                                <span>Dec 10, 2024</span>
+                            </div>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="cta-banner">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Book a free consultation and discover how we can accelerate your digital growth</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn-primary" onclick="setContactSubject('consultation')">Book Consultation</a>
+                    <a href="#contact" class="btn-secondary" onclick="setContactSubject('quote')">Request Quote</a>
+
+                    <!-- Contact Form Modal -->
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your digital transformation journey? Let's discuss how we can help your business grow.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Our Location</h3>
+                        <p>Kumasi, Ghana<br>West Africa</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Call Us</h3>
+                        <p>+233 545 724 871<br>Mon - Fri, 9AM - 6PM</p>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email Us</h3>
+                        <p>info@prosoftdigital.com<br>support@prosoftdigital.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <div class="contact-form-wrapper">
+                        <h3>Send us a Message</h3>
+                        <form class="contact-form" id="mainContactForm" onsubmit="handleContactSubmit(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactName">Full Name *</label>
+                                    <input type="text" id="contactName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactEmail">Email Address *</label>
+                                    <input type="email" id="contactEmail" name="email" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="contactPhone">Phone Number</label>
+                                    <input type="tel" id="contactPhone" name="phone">
+                                </div>
+                                <div class="form-group">
+                                    <label for="contactSubject">Subject *</label>
+                                    <select id="contactSubject" name="subject" required>
+                                        <option value="">Select a subject</option>
+                                        <option value="consultation">Free Consultation</option>
+                                        <option value="quote">Request Quote</option>
+                                        <option value="branding">Branding & Design</option>
+                                        <option value="software">Software & AI Solutions</option>
+                                        <option value="print">Print & Production</option>
+                                        <option value="consulting">Business Consulting</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="contactMessage">Message *</label>
+                                <textarea id="contactMessage" name="message" rows="5" placeholder="Tell us about your project or how we can help you..." required></textarea>
+                            </div>
+                            
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" id="contactNewsletter">
+                                    <span class="checkmark"></span>
+                                    Subscribe to our newsletter for updates and insights
+                                </label>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary contact-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer Widget -->
+    <div id="footer-widget"></div>
+    <script>
+        fetch('footer-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-widget').innerHTML = data;
+            })
+            .catch(error => console.error('Error loading footer widget:', error));
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>

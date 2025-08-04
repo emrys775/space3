@@ -1,0 +1,174 @@
+<div class="modern-generator-container">
+    <div class="generator-header">
+        <h2>AI Image Generator</h2>
+        <p>Create stunning visuals for your digital projects with advanced AI</p>
+    </div>
+    
+    <div class="generator-form">
+        <!-- Device Selection -->
+        <div class="form-section">
+            <h3>Which device are you designing for?</h3>
+            <div class="device-selection">
+                <div class="device-option" data-device="mobile">
+                    <div class="device-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <span>Mobile</span>
+                </div>
+                <div class="device-option" data-device="tablet">
+                    <div class="device-icon">
+                        <i class="fas fa-tablet-alt"></i>
+                    </div>
+                    <span>Tablet</span>
+                </div>
+                <div class="device-option active" data-device="web">
+                    <div class="device-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <span>Web</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project Description -->
+        <div class="form-section">
+            <div class="section-header">
+                <h3>Describe your project in plain English</h3>
+                <button class="try-example-btn" type="button">
+                    <i class="fas fa-magic"></i>
+                    Try example
+                </button>
+            </div>
+            <div class="description-input">
+                <textarea 
+                    id="imagePrompt" 
+                    placeholder="A modern landing page for a fintech startup with clean design and professional imagery..."
+                    maxlength="300"
+                ></textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span>/300
+                </div>
+            </div>
+        </div>
+        
+        <!-- Style Selection -->
+        <div class="form-section">
+            <h3>Describe a design style, pick keywords, or both</h3>
+            <div class="style-input">
+                <input 
+                    type="text" 
+                    id="styleInput" 
+                    placeholder="Like a modern tech company"
+                    maxlength="150"
+                />
+                <div class="style-char-counter">
+                    <span id="styleCharCount">0</span>/150
+                </div>
+            </div>
+            
+            <div class="style-tags">
+                <div class="tag-group">
+                    <button class="style-tag" data-style="light">Light</button>
+                    <button class="style-tag active" data-style="dark">Dark</button>
+                    <button class="style-tag" data-style="modern">Modern</button>
+                    <button class="style-tag" data-style="artsy">Artsy</button>
+                    <button class="style-tag" data-style="techy">Techy</button>
+                    <button class="style-tag" data-style="young">Young</button>
+                </div>
+                <div class="tag-group">
+                    <button class="style-tag" data-style="corporate">Corporate</button>
+                    <button class="style-tag active" data-style="formal">Formal</button>
+                    <button class="style-tag" data-style="elegant">Elegant</button>
+                    <button class="style-tag" data-style="hand-drawn">Hand-drawn</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Options -->
+        <div class="form-section advanced-options" style="display: none;">
+            <h3>Advanced Options</h3>
+            <div class="options-grid">
+                <div class="option-group">
+                    <label for="imageSize">Image Size:</label>
+                    <select id="imageSize">
+                        <option value="1024x1024">Square (1024x1024)</option>
+                        <option value="1920x1080">Landscape (1920x1080)</option>
+                        <option value="1080x1920">Portrait (1080x1920)</option>
+                        <option value="1200x800">Wide (1200x800)</option>
+                    </select>
+                </div>
+                
+                <div class="option-group">
+                    <label for="serviceType">Service Category:</label>
+                    <select id="serviceType">
+                        <option value="custom">Custom Prompt</option>
+                        <option value="web-development">Web Development</option>
+                        <option value="mobile-apps">Mobile Apps</option>
+                        <option value="ai-solutions">AI Solutions</option>
+                        <option value="digital-marketing">Digital Marketing</option>
+                        <option value="graphic-design">Graphic Design</option>
+                        <option value="video-editing">Video Editing</option>
+                        <option value="drone-services">Drone Services</option>
+                        <option value="it-consulting">IT Consulting</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Generate Button -->
+        <div class="generate-section">
+            <button id="generateBtn" class="generate-btn">
+                <span>Generate my project</span>
+                <span class="beta-badge">Beta</span>
+            </button>
+            <button id="advancedToggle" class="advanced-toggle">
+                <i class="fas fa-cog"></i>
+                Advanced Options
+            </button>
+        </div>
+    </div>
+    
+    <div class="image-result">
+        <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating your professional image...</p>
+            <small>This may take a few moments</small>
+        </div>
+        
+        <div id="generatedImage" class="generated-image-container" style="display: none;">
+            <div class="image-preview">
+                <img id="resultImage" alt="Generated image" />
+                <div class="image-overlay">
+                    <div class="image-info">
+                        <span id="imageDescription"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="image-actions">
+                <button id="downloadBtn" class="btn-secondary">
+                    <i class="fas fa-download"></i> Download
+                </button>
+                <button id="regenerateBtn" class="btn-secondary">
+                    <i class="fas fa-redo"></i> Regenerate
+                </button>
+                <button id="useImageBtn" class="btn-primary">
+                    <i class="fas fa-check"></i> Use This Image
+                </button>
+            </div>
+        </div>
+        
+        <div id="errorMessage" class="error-message" style="display: none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText"></span>
+            <button id="retryBtn" class="btn-secondary">Try Again</button>
+        </div>
+    </div>
+    
+    <div class="generated-images-gallery" id="imagesGallery" style="display: none;">
+        <h4>Generated Images</h4>
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Generated images will be added here -->
+        </div>
+    </div>
+</div>
