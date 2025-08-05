@@ -15,7 +15,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-graduation-cap",
             color: "#4CAF50",
-            image: "web dev/portrait-professor-work-educational-system.jpg"
+            image: "web dev/prosoft img (1).jpg"
         },
         {
             id: 2,
@@ -30,7 +30,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-church",
             color: "#9C27B0",
-            image: "web dev/pexels-rdne-8293708.jpg"
+            image: "web dev/prosoft img (12).jpg"
         },
         {
             id: 3,
@@ -45,7 +45,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-hospital",
             color: "#F44336",
-            image: "web dev/male-female-new-graduate-nurses-engaged-professional-training.jpg"
+            image: "web dev/prosoft img (10).jpg"
         },
         {
             id: 4,
@@ -60,7 +60,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-briefcase",
             color: "#2196F3",
-            image: "web dev/bargain-stylish-empty-deal-coworker.jpg"
+            image: "web dev/prosoft img (3).jpg"
         },
         {
             id: 5,
@@ -75,7 +75,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-building",
             color: "#FF9800",
-            image: "web dev/pexels-cottonbro-5378703.jpg"
+            image: "web dev/prosoft img (2).jpg"
         },
         {
             id: 6,
@@ -90,7 +90,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-seedling",
             color: "#4CAF50",
-            image: "web dev/photorealistic-woman-organic-sustainable-garden-harvesting-produce.jpg"
+            image: "web dev/prosoft img (8).jpg"
         },
         {
             id: 7,
@@ -105,7 +105,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-cow",
             color: "#795548",
-            image: "web dev/chicken-farm-scene-with-poultry-people.jpg"
+            image: "web dev/prosoft img (5).jpg"
         },
         {
             id: 8,
@@ -120,7 +120,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-dumbbell",
             color: "#E91E63",
-            image: "web dev/high-angle-woman-treadmill-using-mobile.jpg"
+            image: "web dev/prosoft img (7).jpg"
         },
         {
             id: 9,
@@ -135,7 +135,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-utensils",
             color: "#FF5722",
-            image: "web dev/woman-working-as-professional-chef.jpg"
+            image: "web dev/prosoft img (6).jpg"
         },
         {
             id: 10,
@@ -150,7 +150,7 @@ const portfolioData = {
             category: "Web Development",
             icon: "fas fa-bed",
             color: "#3F51B5",
-            image: "web dev/pexels-haberdoedas-33215586.jpg"
+            image: "web dev/prosoft img 13.jpg"
         }
     ],
     
@@ -375,23 +375,13 @@ function generatePortfolioGrid(category = 'all') {
             return `
                 <div class="portfolio-item" data-category="${item.category.toLowerCase().replace(/\s+/g, '-')}" onclick="openModal(${item.id})">
                     <div class="portfolio-image">
-                        <div class="app-preview" style="background: linear-gradient(135deg, ${item.color}20 0%, ${item.color}10 100%);">
-                            <i class="${item.icon} app-icon-large" style="color: ${item.color};"></i>
-                            <div class="app-mockup">
-                                <div class="phone-frame">
-                                    <div class="phone-screen" style="background: linear-gradient(135deg, ${item.color} 0%, ${item.color}dd 100%);">
-                                        <i class="${item.icon}" style="font-size: 3rem; color: white;"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <img src="${item.image}" alt="${item.name}" class="portfolio-image-display" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px;">
                     </div>
                     <div class="portfolio-content">
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
                         <div class="portfolio-meta">
                             <span class="portfolio-category" style="background: ${item.color}">${item.category}</span>
-                            <span class="portfolio-monetization">${item.monetization}</span>
                         </div>
                     </div>
                 </div>

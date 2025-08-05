@@ -3,9 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Prosoft Digital Space</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Portfolio - Custom Web Development & Management Systems | Prosoft Digital Space Ghana</title>
+    <meta name="description" content="Explore our portfolio of custom web development projects, management systems, and digital solutions. School, hospital, business, and property management systems built for African businesses.">
+    <meta name="keywords" content="portfolio web development Ghana, custom management systems, school management system, hospital management system, business ERP Ghana, property management software, digital portfolio Africa">
+    <meta name="author" content="Prosoft Digital Space">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Portfolio - Custom Web Development & Management Systems | Prosoft Digital Space">
+    <meta property="og:description" content="Explore our portfolio of custom web development projects and management systems built for African businesses.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://prosoftdigitalspace.com/portfolio.html">
+    <meta property="og:image" content="web dev/prosoft img (1).jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Portfolio - Custom Web Development & Management Systems">
+    <meta name="twitter:description" content="Explore our portfolio of custom web development projects and management systems built for African businesses.">
+    <meta name="twitter:image" content="web dev/prosoft img (1).jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://prosoftdigitalspace.com/portfolio.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/PROSOFT logo.png">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="portfolio.js" as="script">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Structured Data for Portfolio -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Prosoft Digital Space Portfolio",
+      "description": "Portfolio showcasing custom web development projects, management systems, and digital solutions for African businesses",
+      "creator": {
+        "@type": "Organization",
+        "name": "Prosoft Digital Space",
+        "url": "https://prosoftdigitalspace.com"
+      },
+      "workExample": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "School Management System",
+          "description": "Comprehensive school management solution for educational institutions",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web Browser"
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Hospital Management System",
+          "description": "Advanced healthcare management solution for medical facilities",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web Browser"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <!-- Navigation Widget -->
@@ -24,18 +86,18 @@
     <!-- Portfolio Hero Section -->
     <section class="portfolio-hero">
         <div class="container">
-            <h1>Our Portfolio</h1>
-            <p>Discover the innovative apps and solutions we've built for businesses across Africa</p>
-            <div class="portfolio-stats">
-                <div class="stat">
-                    <span class="number">20+</span>
+            <h1 class="animate-fade-in-up">Our Portfolio</h1>
+            <p class="animate-fade-in-up animate-delay-1">Discover the innovative apps and solutions we've built for businesses across Africa</p>
+            <div class="portfolio-stats animate-fade-in-up animate-delay-2">
+                <div class="stat animate-on-scroll animate-delay-1">
+                    <span class="number animate-pulse">20+</span>
                     <span class="label">Apps Developed</span>
                 </div>
-                <div class="stat">
-                    <span class="number">15+</span>
+                <div class="stat animate-on-scroll animate-delay-2">
+                    <span class="number animate-pulse">15+</span>
                     <span class="label">Industries Served</span>
                 </div>
-                <div class="stat">
+                <div class="stat animate-on-scroll animate-delay-3">
                     <span class="number">100%</span>
                     <span class="label">Client Satisfaction</span>
                 </div>
@@ -145,5 +207,6 @@
     </script>
 
     <script src="portfolio.js"></script>
+    <script src="performance-animations.js"></script>
 </body>
 </html>

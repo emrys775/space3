@@ -237,17 +237,6 @@
             // Load posts from localStorage
             const allPosts = blogManager.getAllBlogPosts();
             
-            // Also try to load posts from the blog-posts folder
-            try {
-                const response = await fetch('http://localhost:8001/list-blog-posts');
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log(`Found ${data.files.length} blog post files in blog-posts folder`);
-                }
-            } catch (error) {
-                console.log('Blog server not running, using localStorage only');
-            }
-            
             filteredPosts = allPosts;
             displayBlogPosts();
         }
@@ -360,9 +349,8 @@
             if (post) {
                 blogManager.incrementViews(postId);
                 
-                // Redirect to blog post in blog-posts folder
-                const fileName = blogManager.generateFileName(post.title);
-                window.open(`blog-posts/${fileName}`, '_blank');
+                // Since blog post files are no longer created, show post content in a modal or redirect to a dynamic page
+                alert('Blog post viewing functionality has been simplified. Individual blog post files are no longer created.');
                 
                 displayBlogPosts();
             }

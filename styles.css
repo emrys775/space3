@@ -1,8 +1,19 @@
+/* Performance Optimizations */
+html {
+    scroll-behavior: smooth;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 
 body {
@@ -11,6 +22,133 @@ body {
     color: #ffffff;
     background-color: #0a1628;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Performance: GPU acceleration for animations */
+.hero,
+.portfolio-item,
+.service-card,
+.nav-logo,
+.cta-button {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Lazy loading images */
+img {
+    loading: lazy;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Animation Keyframes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.animate-delay-1 { animation-delay: 0.1s; }
+.animate-delay-2 { animation-delay: 0.2s; }
+.animate-delay-3 { animation-delay: 0.3s; }
+.animate-delay-4 { animation-delay: 0.4s; }
+.animate-delay-5 { animation-delay: 0.5s; }
+
+/* Initial state for animated elements */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .container {
@@ -3086,6 +3224,122 @@ section {
     border-radius: 8px;
     padding: 1rem;
     margin-top: 1rem;
+}
+
+.extra-info strong {
+    color: #9aff00;
+}
+
+/* Performance Optimizations */
+
+/* Critical CSS for above-the-fold content */
+.hero {
+    contain: layout style paint;
+}
+
+/* Optimize images for performance */
+img {
+    content-visibility: auto;
+    contain-intrinsic-size: 300px 200px;
+}
+
+/* Reduce layout shifts */
+.portfolio-item {
+    contain: layout style;
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* GPU acceleration for smooth animations */
+.portfolio-item:hover,
+.service-card:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Optimize font loading */
+.fonts-loaded body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Lazy loading placeholder */
+.lazy-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Critical path optimization */
+.above-fold {
+    contain: layout style paint;
+}
+
+/* Intersection observer optimization */
+.animate-on-scroll {
+    content-visibility: auto;
+}
+
+/* Smooth scrolling with performance consideration */
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Optimize for mobile performance */
+@media (max-width: 768px) {
+    .hero-image {
+        will-change: auto;
+    }
+    
+    .animate-float {
+        animation: none;
+    }
+    
+    .portfolio-item {
+        transform: none !important;
+    }
+}
+
+/* Print styles for SEO */
+@media print {
+    .navbar,
+    .hero-buttons,
+    .modal {
+        display: none;
+    }
+    
+    body {
+        color: #000;
+        background: #fff;
+    }
+    
+    .hero-title,
+    .portfolio-item h3 {
+        color: #000;
+    }
 }
 
 .extra-info strong {
