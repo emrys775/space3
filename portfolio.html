@@ -51,6 +51,14 @@
                 <p>Explore our comprehensive collection of innovative applications and digital solutions</p>
             </div>
             
+            <!-- Portfolio Navigation -->
+            <div class="portfolio-nav">
+                <button class="portfolio-nav-btn active" data-category="all">All Projects</button>
+                <button class="portfolio-nav-btn" data-category="branding">Branding & Print</button>
+                <button class="portfolio-nav-btn" data-category="web-design">Web Design</button>
+                <button class="portfolio-nav-btn" data-category="web-development">Web Development</button>
+            </div>
+            
             <div class="portfolio-grid" id="portfolioGrid">
                 <!-- Portfolio items will be dynamically generated -->
             </div>
@@ -76,12 +84,12 @@
                         <p id="modalTargetUsers"></p>
                     </div>
                     <div class="info-section">
-                        <h3><i class="fas fa-dollar-sign"></i> Monetization</h3>
+                        <h3><i class="fas fa-dollar-sign"></i> Subscription Fee</h3>
                         <p id="modalMonetization"></p>
                     </div>
                     <div class="info-section">
-                        <h3><i class="fas fa-robot"></i> AI Integration</h3>
-                        <p id="modalAI"></p>
+                        <h3><i class="fas fa-cogs"></i> Key Features & Details</h3>
+                        <div id="modalAI"></div>
                     </div>
                     <div class="info-section">
                         <h3><i class="fas fa-chart-line"></i> Scalability</h3>
@@ -92,6 +100,34 @@
             <div class="modal-footer">
                 <button class="btn-primary">Request Similar App</button>
                 <button class="btn-secondary">Learn More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Gallery Modal -->
+    <div id="imageGalleryModal" class="modal image-gallery-modal">
+        <div class="gallery-content">
+            <span class="close gallery-close">&times;</span>
+            <div class="gallery-header">
+                <h2 id="galleryTitle"></h2>
+                <p id="galleryDescription"></p>
+            </div>
+            <div class="gallery-main">
+                <button class="gallery-nav prev-btn" onclick="previousImage()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="gallery-image-container">
+                    <img id="galleryImage" src="" alt="">
+                </div>
+                <button class="gallery-nav next-btn" onclick="nextImage()">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="gallery-thumbnails" id="galleryThumbnails">
+                <!-- Thumbnails will be generated here -->
+            </div>
+            <div class="gallery-counter">
+                <span id="imageCounter">1 / 6</span>
             </div>
         </div>
     </div>

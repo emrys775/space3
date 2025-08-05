@@ -369,6 +369,27 @@ function getEnhancedSampleBlogsByCategory(category) {
     );
 }
 
+/**
+ * Load sample data into localStorage using BlogManager
+ * @returns {Promise} Promise that resolves when data is loaded
+ */
+async function loadSampleData() {
+    console.log('Loading sample blog data into localStorage...');
+    
+    // Check if BlogManager is available
+    if (typeof blogManager === 'undefined') {
+        console.error('BlogManager not available');
+        return;
+    }
+    
+    // Load each sample blog post
+    for (const post of enhancedSampleBlogPosts) {
+        await blogManager.saveBlogPost(post);
+    }
+    
+    console.log(`Loaded ${enhancedSampleBlogPosts.length} sample blog posts`);
+}
+
 // Export functions for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {

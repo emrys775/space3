@@ -201,10 +201,9 @@
     </script>
 
     <script src="blog-manager.js"></script>
+    <script src="enhanced-sample-blog-data.js"></script>
     <script>
         let blogManager = null;
-        let currentPage = 1;
-        const postsPerPage = 6;
         let filteredPosts = [];
         
         // Initialize the blog page
@@ -226,12 +225,10 @@
         
         function setupEventListeners() {
             document.getElementById('searchInput').addEventListener('input', function() {
-                currentPage = 1;
                 filterAndDisplayPosts();
             });
             
             document.getElementById('categoryFilter').addEventListener('change', function() {
-                currentPage = 1;
                 filterAndDisplayPosts();
             });
         }
@@ -292,13 +289,11 @@
             blogGrid.style.display = 'grid';
             emptyState.style.display = 'none';
             
-            const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-            const startIndex = (currentPage - 1) * postsPerPage;
-            const endIndex = startIndex + postsPerPage;
-            const postsToShow = filteredPosts.slice(startIndex, endIndex);
+            // Display all filtered posts without pagination
+            blogGrid.innerHTML = filteredPosts.map(post => createBlogCard(post)).join('');
             
-            blogGrid.innerHTML = postsToShow.map(post => createBlogCard(post)).join('');
-            generatePagination(totalPages);
+            // Clear pagination since we're showing all posts
+            document.getElementById('pagination').innerHTML = '';
         }
         
         function createBlogCard(post) {
@@ -356,14 +351,7 @@
             pagination.innerHTML = paginationHtml;
         }
         
-        function changePage(page) {
-            const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-            if (page >= 1 && page <= totalPages) {
-                currentPage = page;
-                displayBlogPosts();
-                document.getElementById('blogGrid').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+        // Pagination removed - all posts are now displayed at once
         
 
         
@@ -383,7 +371,6 @@
 
         
         // Global functions
-        window.changePage = changePage;
         window.openBlogPost = openBlogPost;
     </script>
     
