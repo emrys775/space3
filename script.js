@@ -385,31 +385,51 @@ function handleContactSubmit(event) {
     submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
     submitBtn.disabled = true;
     
-    // Simulate form submission (replace with actual API call)
-    setTimeout(() => {
+    // Submit to Formspree
+    fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
         // Reset button
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;
         
-        // Show success message
-        const subject = formData.get('subject');
-        let successMessage = 'Thank you for your message! We will get back to you within 24 hours.';
-        
-        if (subject === 'consultation') {
-            successMessage = 'Thank you for requesting a consultation! Our team will contact you within 24 hours to schedule your free consultation.';
-        } else if (subject === 'quote') {
-            successMessage = 'Thank you for your quote request! We will review your requirements and send you a detailed proposal within 48 hours.';
+        if (response.ok) {
+            // Show success message
+            const subject = formData.get('subject');
+            let successMessage = 'Thank you for your message! We will get back to you within 24 hours.';
+            
+            if (subject === 'consultation') {
+                successMessage = 'Thank you for requesting a consultation! Our team will contact you within 24 hours to schedule your free consultation.';
+            } else if (subject === 'quote') {
+                successMessage = 'Thank you for your quote request! We will review your requirements and send you a detailed proposal within 48 hours.';
+            }
+            
+            showModal('Message Sent Successfully', successMessage);
+            
+            // Reset form
+            form.reset();
+            
+            // Show success toast
+            showToast('Message sent successfully!', 'success');
+        } else {
+            throw new Error('Form submission failed');
         }
+    })
+    .catch(error => {
+        // Reset button
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
         
-        showModal('Message Sent Successfully', successMessage);
-        
-        // Reset form
-        form.reset();
-        
-        // Show success toast
-        showToast('Message sent successfully!', 'success');
-        
-    }, 2000);
+        // Show error message
+        showModal('Submission Error', 'There was an error sending your message. Please try again or contact us directly.');
+        showToast('Failed to send message. Please try again.', 'error');
+        console.error('Form submission error:', error);
+    });
 }
 
 // Function to set contact form subject when CTA buttons are clicked
@@ -422,6 +442,8 @@ function setContactSubject(subject) {
         }
     }, 800); // Wait for smooth scroll to complete
 }
+
+
 
 // Typing animation for hero title
 function typeWriter(element, text, speed = 100) {
@@ -677,12 +699,36 @@ if (document.querySelector('.blog-layout')) {
     loadBlogSidebar();
 }
 
+// FAQ Toggle Functionality
+function initializeFAQ() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            // Close other open FAQ items
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item && otherItem.classList.contains('active')) {
+                    otherItem.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            item.classList.toggle('active');
+        });
+    });
+}
+
 // Initialize all components when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize charts if Chart.js is available
     if (typeof Chart !== 'undefined') {
         initializeCharts();
     }
+    
+    // Initialize FAQ functionality
+    initializeFAQ();
     
     // Initialize other components
     console.log('Prosoft Digital Space website loaded successfully!');

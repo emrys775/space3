@@ -449,6 +449,143 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
+// Request Similar App Modal Functions
+function openRequestAppModal() {
+    const requestModal = document.getElementById('requestAppModal');
+    if (requestModal) {
+        requestModal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeRequestAppModal() {
+    const requestModal = document.getElementById('requestAppModal');
+    if (requestModal) {
+        requestModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
+
+
+
+
+// Form submission handlers
+function handleRequestAppSubmission(event) {
+    event.preventDefault();
+    
+    const form = event.target;
+    const submitBtn = form.querySelector('.submit-btn');
+    const btnText = submitBtn.querySelector('.btn-text');
+    const btnLoading = submitBtn.querySelector('.btn-loading');
+    
+    // Show loading state
+    btnText.style.display = 'none';
+    btnLoading.style.display = 'inline';
+    submitBtn.disabled = true;
+    
+    // Collect form data
+    const formData = new FormData(form);
+    const data = {
+        type: 'request_app',
+        name: formData.get('clientName'),
+        email: formData.get('clientEmail'),
+        phone: formData.get('clientPhone'),
+        company: formData.get('companyName'),
+        projectType: formData.get('projectType'),
+        budget: formData.get('budget'),
+
+        description: formData.get('projectDescription'),
+        additionalInfo: formData.get('additionalInfo'),
+        timestamp: new Date().toISOString()
+    };
+    
+    // Submit to Formspree
+    fetch('https://formspree.io/f/mldlpobl', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => {
+        // Reset loading state
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        if (response.ok) {
+            // Show success message
+            alert('Thank you for your request! We will contact you within 24 hours to discuss your project requirements.');
+            
+            // Reset form and close modal
+            form.reset();
+            closeRequestAppModal();
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        
+        // Reset loading state
+        btnText.style.display = 'inline';
+        btnLoading.style.display = 'none';
+        submitBtn.disabled = false;
+        
+        // Show error message
+        alert('Sorry, there was an error submitting your request. Please try again or contact us directly.');
+    });
+}
+
+
+
+// Get all unique tags from portfolio items
+function getAllTags() {
+    const allItems = getAllPortfolioItems();
+    const tags = new Set();
+    
+    allItems.forEach(item => {
+        if (item.keyFeatures) {
+            item.keyFeatures.forEach(feature => tags.add(feature));
+        }
+        if (item.services) {
+            item.services.forEach(service => tags.add(service));
+        }
+    });
+    
+    return Array.from(tags);
+}
+
+// Generate random tags (up to 9)
+function generateRandomTags() {
+    const allTags = getAllTags();
+    const shuffled = allTags.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, 9);
+}
+
+// Display tags in the tags container
+function displayTags() {
+    const tagsContainer = document.getElementById('tagsContainer');
+    const randomTags = generateRandomTags();
+    
+    tagsContainer.innerHTML = randomTags.map(tag => 
+        `<span class="tag-item">${tag}</span>`
+    ).join('');
+}
+
+// Show or hide tags section based on category
+function toggleTagsSection(category) {
+    const tagsSection = document.getElementById('portfolioTags');
+    
+    if (category === 'all') {
+        tagsSection.style.display = 'block';
+        displayTags();
+    } else {
+        tagsSection.style.display = 'none';
+    }
+}
+
 // Portfolio navigation functionality
 function initializePortfolioNavigation() {
     const navButtons = document.querySelectorAll('.portfolio-nav-btn');
@@ -463,6 +600,7 @@ function initializePortfolioNavigation() {
             // Get category and filter portfolio
             const category = button.getAttribute('data-category');
             generatePortfolioGrid(category);
+            toggleTagsSection(category);
         });
     });
 }
@@ -584,10 +722,21 @@ window.addEventListener('click', (e) => {
     }
 });
 
+// Make popup modal functions globally accessible immediately
+window.openRequestAppModal = openRequestAppModal;
+window.closeRequestAppModal = closeRequestAppModal;
+
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
+    // Debug: Log that functions are loaded
+    console.log('Popup modal functions loaded:', {
+        openRequestAppModal: typeof window.openRequestAppModal,
+        closeRequestAppModal: typeof window.closeRequestAppModal
+    });
+    
     generatePortfolioGrid('all');
     initializePortfolioNavigation();
+    toggleTagsSection('all'); // Initialize tags section for default 'all' category
     
     // Initialize mobile menu
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -614,13 +763,43 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Request App Modal event listeners
+    const requestAppModal = document.getElementById('requestAppModal');
+    if (requestAppModal) {
+        requestAppModal.addEventListener('click', function(event) {
+            if (event.target === requestAppModal) {
+                closeRequestAppModal();
+            }
+        });
+    }
+    
+
+    
+    // Form submission handlers
+    const requestAppForm = document.getElementById('requestAppForm');
+    if (requestAppForm) {
+        requestAppForm.addEventListener('submit', handleRequestAppSubmission);
+    }
+    
+
 });
 
 // Keyboard navigation
 document.addEventListener('keydown', function(event) {
-    // Regular modal escape
     if (event.key === 'Escape') {
-        closeModal();
+        // Check which modal is open and close it
+        const requestAppModal = document.getElementById('requestAppModal');
+        const galleryModal = document.getElementById('imageGalleryModal');
+        const appModal = document.getElementById('appModal');
+        
+        if (requestAppModal && requestAppModal.style.display === 'block') {
+            closeRequestAppModal();
+        } else if (galleryModal && galleryModal.style.display === 'block') {
+            closeImageGallery();
+        } else if (appModal && appModal.style.display === 'block') {
+            closeModal();
+        }
     }
     
     // Gallery keyboard navigation
@@ -632,9 +811,6 @@ document.addEventListener('keydown', function(event) {
                 break;
             case 'ArrowRight':
                 nextImage();
-                break;
-            case 'Escape':
-                closeImageGallery();
                 break;
         }
     }

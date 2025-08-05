@@ -428,7 +428,7 @@
                             <div class="blog-meta">
                                 <span>5 min read</span>
                                 <span>•</span>
-                                <span>Dec 15, 2024</span>
+                                <span>Mar 15, 2025</span>
                             </div>
                         </div>
                     </a>
@@ -513,7 +513,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <h3>Call Us</h3>
-                        <p>+233 545 724 871<br>Mon - Fri, 9AM - 6PM</p>
+                        <p>+233 501 430 278<br>Mon - Fri, 9AM - 5PM</p>
                     </div>
                     
                     <div class="contact-card">
@@ -528,44 +528,52 @@
                 <div class="contact-form-container">
                     <div class="contact-form-wrapper">
                         <h3>Send us a Message</h3>
-                        <form class="contact-form" id="mainContactForm" onsubmit="handleContactSubmit(event)">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contactName">Full Name *</label>
-                                    <input type="text" id="contactName" name="name" required>
+                        <form class="contact-form" id="mainContactForm" action="https://formspree.io/f/xanbplqo" method="POST">
+                            <div class="form-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-user"></i>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contactEmail">Email Address *</label>
-                                    <input type="email" id="contactEmail" name="email" required>
-                                </div>
+                                <input type="text" id="contactName" name="name" placeholder="Full Name *" required>
                             </div>
                             
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="contactPhone">Phone Number</label>
-                                    <input type="tel" id="contactPhone" name="phone">
+                            <div class="form-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
-                                <div class="form-group">
-                                    <label for="contactSubject">Subject *</label>
-                                    <select id="contactSubject" name="subject" required>
-                                        <option value="">Select a subject</option>
-                                        <option value="consultation">Free Consultation</option>
-                                        <option value="quote">Request Quote</option>
-                                        <option value="branding">Branding & Design</option>
-                                        <option value="software">Software & AI Solutions</option>
-                                        <option value="print">Print & Production</option>
-                                        <option value="consulting">Business Consulting</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
+                                <input type="email" id="contactEmail" name="email" placeholder="Email Address *" required>
                             </div>
                             
-                            <div class="form-group">
-                                <label for="contactMessage">Message *</label>
+                            <div class="form-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <input type="tel" id="contactPhone" name="phone" placeholder="Phone Number">
+                            </div>
+                            
+                            <div class="form-field select-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-tag"></i>
+                                </div>
+                                <select id="contactSubject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="consultation">Free Consultation</option>
+                                    <option value="quote">Request Quote</option>
+                                    <option value="branding">Branding & Design</option>
+                                    <option value="software">Software & AI Solutions</option>
+                                    <option value="print">Print & Production</option>
+                                    <option value="consulting">Business Consulting</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-field">
+                                <div class="field-icon">
+                                    <i class="fas fa-comment"></i>
+                                </div>
                                 <textarea id="contactMessage" name="message" rows="5" placeholder="Tell us about your project or how we can help you..." required></textarea>
                             </div>
                             
-                            <div class="form-group checkbox-group">
+                            <div class="form-field checkbox-group">
                                 <label class="checkbox-label">
                                     <input type="checkbox" name="newsletter" id="contactNewsletter">
                                     <span class="checkmark"></span>
@@ -577,12 +585,19 @@
                                 <i class="fas fa-paper-plane"></i>
                                 Send Message
                             </button>
+                            
+                            <!-- Formspree hidden fields -->
+                            <input type="hidden" name="_subject" value="New contact form submission from Prosoft Digital Space">
+                            <input type="hidden" name="_next" value="http://localhost:3000/#contact">
+                            <input type="hidden" name="_captcha" value="false">
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+
 
     <!-- Footer -->
     <!-- Footer Widget -->

@@ -121,6 +121,14 @@
                 <button class="portfolio-nav-btn" data-category="web-development">Web Development</button>
             </div>
             
+            <!-- Tags Section (visible only for All Projects) -->
+            <div class="portfolio-tags" id="portfolioTags" style="display: none;">
+                <h3>Popular Tags</h3>
+                <div class="tags-container" id="tagsContainer">
+                    <!-- Tags will be dynamically generated -->
+                </div>
+            </div>
+            
             <div class="portfolio-grid" id="portfolioGrid">
                 <!-- Portfolio items will be dynamically generated -->
             </div>
@@ -160,8 +168,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn-primary">Request Similar App</button>
-                <button class="btn-secondary">Learn More</button>
+                <button class="btn-primary" onclick="openRequestAppModal()">Request Similar App</button>
             </div>
         </div>
     </div>
@@ -193,6 +200,75 @@
             </div>
         </div>
     </div>
+
+    <!-- Request Similar App Modal -->
+    <div id="requestAppModal" class="modal request-app-modal">
+        <div class="modal-content request-modal-content">
+            <span class="close" onclick="closeRequestAppModal()">&times;</span>
+            <div class="request-header">
+                <h2>Request App</h2>
+            </div>
+            <form id="requestAppForm" class="request-form" action="https://formspree.io/f/mldlpobl" method="POST">
+                <!-- Formspree configuration -->
+                <input type="hidden" name="_subject" value="New App Request from Portfolio">
+                <input type="hidden" name="_next" value="http://localhost:3000/portfolio.html">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-field">
+                    <div class="field-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <input type="text" id="clientName" name="clientName" placeholder="Name" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-field">
+                        <div class="field-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <input type="tel" id="clientPhone" name="clientPhone" placeholder="Phone Number">
+                    </div>
+
+                </div>
+                
+                <div class="form-field">
+                    <div class="field-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <input type="email" id="clientEmail" name="clientEmail" placeholder="Email Address" required>
+                </div>
+                
+                <div class="form-field">
+                    <div class="field-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <input type="text" id="companyName" name="companyName" placeholder="Company">
+                </div>
+                
+                <div class="form-field">
+                    <div class="field-icon">
+                        <i class="fas fa-comment"></i>
+                    </div>
+                    <textarea id="projectMessage" name="projectMessage" placeholder="Describe your project or message" rows="4" required></textarea>
+                </div>
+                
+
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="closeRequestAppModal()">Cancel</button>
+                    <button type="submit" class="btn-submit">
+                        <span class="btn-text">Send Request</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            Sending...
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
 
     <!-- Footer -->
     <!-- Footer Widget -->
