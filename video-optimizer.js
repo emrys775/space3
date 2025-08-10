@@ -11,7 +11,7 @@ const execPromise = util.promisify(exec);
 class VideoOptimizer {
     constructor() {
         this.videoExtensions = ['.mp4', '.avi', '.mov', '.mkv', '.webm', '.flv', '.wmv', '.m4v'];
-        this.videoFolders = ['assets', 'assets2', 'assest3', 'videos'];
+        this.videoFolders = ['assets', 'assets2', 'assest3', 'video'];
         this.optimizedFolder = 'optimized-videos';
         this.compressionSettings = {
             // High quality, good compression

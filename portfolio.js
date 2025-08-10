@@ -501,7 +501,7 @@ function handleRequestAppSubmission(event) {
     };
     
     // Submit to Formspree
-    fetch('https://formspree.io/f/mldlpobl', {
+    fetch('https://formspree.io/f/myzpnldz', {
         method: 'POST',
         body: formData,
         headers: {
@@ -541,50 +541,9 @@ function handleRequestAppSubmission(event) {
 
 
 // Get all unique tags from portfolio items
-function getAllTags() {
-    const allItems = getAllPortfolioItems();
-    const tags = new Set();
-    
-    allItems.forEach(item => {
-        if (item.keyFeatures) {
-            item.keyFeatures.forEach(feature => tags.add(feature));
-        }
-        if (item.services) {
-            item.services.forEach(service => tags.add(service));
-        }
-    });
-    
-    return Array.from(tags);
-}
 
-// Generate random tags (up to 9)
-function generateRandomTags() {
-    const allTags = getAllTags();
-    const shuffled = allTags.sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 9);
-}
 
-// Display tags in the tags container
-function displayTags() {
-    const tagsContainer = document.getElementById('tagsContainer');
-    const randomTags = generateRandomTags();
-    
-    tagsContainer.innerHTML = randomTags.map(tag => 
-        `<span class="tag-item">${tag}</span>`
-    ).join('');
-}
 
-// Show or hide tags section based on category
-function toggleTagsSection(category) {
-    const tagsSection = document.getElementById('portfolioTags');
-    
-    if (category === 'all') {
-        tagsSection.style.display = 'block';
-        displayTags();
-    } else {
-        tagsSection.style.display = 'none';
-    }
-}
 
 // Portfolio navigation functionality
 function initializePortfolioNavigation() {
@@ -600,7 +559,6 @@ function initializePortfolioNavigation() {
             // Get category and filter portfolio
             const category = button.getAttribute('data-category');
             generatePortfolioGrid(category);
-            toggleTagsSection(category);
         });
     });
 }
@@ -734,9 +692,14 @@ document.addEventListener('DOMContentLoaded', function() {
         closeRequestAppModal: typeof window.closeRequestAppModal
     });
     
-    generatePortfolioGrid('all');
+    generatePortfolioGrid('branding');
     initializePortfolioNavigation();
-    toggleTagsSection('all'); // Initialize tags section for default 'all' category
+    
+    // Set first button as active since 'all' button was removed
+    const firstNavBtn = document.querySelector('.portfolio-nav-btn');
+    if (firstNavBtn) {
+        firstNavBtn.classList.add('active');
+    }
     
     // Initialize mobile menu
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');

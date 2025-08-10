@@ -115,19 +115,12 @@
             
             <!-- Portfolio Navigation -->
             <div class="portfolio-nav">
-                <button class="portfolio-nav-btn active" data-category="all">All Projects</button>
                 <button class="portfolio-nav-btn" data-category="branding">Branding & Print</button>
                 <button class="portfolio-nav-btn" data-category="web-design">Web Design</button>
                 <button class="portfolio-nav-btn" data-category="web-development">Web Development</button>
             </div>
             
-            <!-- Tags Section (visible only for All Projects) -->
-            <div class="portfolio-tags" id="portfolioTags" style="display: none;">
-                <h3>Popular Tags</h3>
-                <div class="tags-container" id="tagsContainer">
-                    <!-- Tags will be dynamically generated -->
-                </div>
-            </div>
+
             
             <div class="portfolio-grid" id="portfolioGrid">
                 <!-- Portfolio items will be dynamically generated -->
@@ -208,7 +201,7 @@
             <div class="request-header">
                 <h2>Request App</h2>
             </div>
-            <form id="requestAppForm" class="request-form" action="https://formspree.io/f/mldlpobl" method="POST">
+            <form id="requestAppForm" class="request-form" action="https://formspree.io/f/myzpnldz" method="POST">
                 <!-- Formspree configuration -->
                 <input type="hidden" name="_subject" value="New App Request from Portfolio">
                 <input type="hidden" name="_next" value="http://localhost:3000/portfolio.html">
@@ -282,7 +275,7 @@
             .catch(error => console.error('Error loading footer widget:', error));
     </script>
 
-    <script src="portfolio.js"></script>
+    <script src="portfolio.js?v=1"></script>
     <script src="performance-animations.js"></script>
 </body>
 </html>
