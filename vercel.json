@@ -6,19 +6,15 @@
       "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/",
-      "dest": "/index.html"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
+      "source": "/",
+      "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/(.*)\\.(js|css|png|jpg|jpeg|gif|svg|ico|woff|woff2|ttf|eot)",
       "headers": [
         {
           "key": "Cache-Control",
@@ -27,7 +23,7 @@
       ]
     },
     {
-      "source": "/(.*).html",
+      "source": "/(.*)\\.(html)",
       "headers": [
         {
           "key": "Cache-Control",
